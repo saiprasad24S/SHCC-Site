@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Clock, CheckCircle2, PhoneCall, Sparkles, MapPin, DollarSign } from 'lucide-react';
+import { CheckCircle2, PhoneCall } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import AppointmentForm from '../components/AppointmentForm/AppointmentForm';
 import { siteData } from '../data/siteData';

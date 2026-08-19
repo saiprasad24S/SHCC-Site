@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Award, CheckCircle, Flag, ArrowRight } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import { aboutData } from '../data/aboutData';
 import historyImg from '../assets/images/skanda-4.jpg';

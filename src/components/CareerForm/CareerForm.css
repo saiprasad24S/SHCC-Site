@@ -1,5 +1,5 @@
 .career-form {
-  background: var(--white);
+  background: var(--surface-card);
   padding: 35px 30px;
   border-radius: var(--border-radius-md);
   border: 1px solid var(--border-color);
@@ -7,23 +7,23 @@
 }
 
 .file-upload-box {
-  border: 2px dashed #ccd9e8;
+  border: 2px dashed var(--border-color);
   border-radius: var(--border-radius-sm);
   padding: 24px 20px;
   text-align: center;
-  background-color: var(--light-background);
+  background-color: var(--bg-secondary);
   transition: all var(--transition-fast);
   cursor: pointer;
 }
 
 .file-upload-box:hover {
   border-color: var(--primary-color);
-  background-color: #ebf4ff;
+  background-color: var(--primary-light);
 }
 
 .file-upload-box.has-error {
   border-color: #dc3545;
-  background-color: #fff5f5;
+  background-color: rgba(220, 53, 69, 0.08);
 }
 
 .file-input-hidden {
@@ -44,34 +44,35 @@
 }
 
 .upload-text {
-  font-size: 14px;
+  font-size: 14.5px;
+  font-weight: 500;
   color: var(--heading-color);
 }
 
 .upload-hint {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-muted);
 }
 
 .career-success-msg {
-  background: var(--white);
+  background: var(--surface-card);
   padding: 40px 30px;
   border-radius: var(--border-radius-md);
-  border: 1px solid #d0e3ff;
+  border: 1px solid var(--border-color);
   text-align: center;
   box-shadow: var(--shadow-md);
 }
 
 .career-success-msg h3 {
   color: var(--primary-color);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin: 15px 0 10px;
 }
 
 .career-success-msg p {
-  font-size: 14.5px;
-  color: var(--body-color);
+  font-size: 15.5px;
+  color: var(--text-secondary);
   max-width: 540px;
   margin: 0 auto 20px;
-  line-height: 1.6;
+  line-height: 1.65;
 }

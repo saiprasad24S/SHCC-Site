@@ -2,9 +2,11 @@
   max-width: 680px;
   margin: 40px auto;
   padding: 60px 40px;
-  background: var(--white);
+  background: var(--surface-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
+  text-align: center;
 }
 
 .not-found-icon {
@@ -13,7 +15,7 @@
 }
 
 .not-found-code {
-  font-size: 5rem;
+  font-size: 5.5rem;
   font-weight: 800;
   color: var(--primary-color);
   line-height: 1;
@@ -22,17 +24,17 @@
 }
 
 .not-found-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--heading-color);
   margin-bottom: 14px;
 }
 
 .not-found-desc {
-  font-size: 15px;
-  color: var(--body-color);
-  max-width: 480px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
+  font-size: 16.5px;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto 32px;
+  line-height: 1.68;
 }
 
 .not-found-actions {

@@ -1,5 +1,5 @@
 .appointment-booking-form {
-  background: var(--white);
+  background: var(--surface-card);
   padding: 35px 30px;
   border-radius: var(--border-radius-md);
   border: 1px solid var(--border-color);
@@ -35,10 +35,10 @@
 }
 
 .appointment-success-box {
-  background: var(--white);
+  background: var(--surface-card);
   padding: 45px 30px;
   border-radius: var(--border-radius-md);
-  border: 1px solid #d0e3ff;
+  border: 1px solid var(--border-color);
   text-align: center;
   box-shadow: var(--shadow-md);
 }
@@ -58,23 +58,24 @@
 }
 
 .appointment-success-box p {
-  font-size: 14.5px;
-  color: var(--body-color);
+  font-size: 15.5px;
+  color: var(--text-secondary);
   max-width: 540px;
   margin: 0 auto 20px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .success-details-summary {
-  background-color: var(--light-background);
+  background-color: var(--bg-secondary);
   padding: 16px;
   border-radius: var(--border-radius-sm);
   margin-bottom: 25px;
-  font-size: 13.5px;
+  font-size: 14px;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  border: 1px solid var(--border-color);
 }
 
 @media (max-width: 768px) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ArrowLeft, HeartCrack } from 'lucide-react';
+import { Home, HeartCrack } from 'lucide-react';
 import './NotFound.css';
 
 export default function NotFound() {

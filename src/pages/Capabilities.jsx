@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Activity, ShieldCheck, CheckCircle2, Phone, Calendar } from 'lucide-react';
+import { Activity, CheckCircle2, Phone, Calendar } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import { aboutData } from '../data/aboutData';
 import { siteData } from '../data/siteData';

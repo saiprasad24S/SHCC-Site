@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, CheckCircle2, Calendar, PhoneCall, Sparkles } from 'lucide-react';
+import { Mail, CheckCircle2, Calendar, PhoneCall } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 import CareerForm from '../components/CareerForm/CareerForm';

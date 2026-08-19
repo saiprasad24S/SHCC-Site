@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, ShieldCheck, Download, ExternalLink, Lock, CheckCircle2 } from 'lucide-react';
+import { FileText, ShieldCheck, ExternalLink } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import { aboutData } from '../data/aboutData';
 import { siteData } from '../data/siteData';

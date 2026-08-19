@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, PhoneCall, Calendar, ArrowRight, ShieldCheck, HeartHandshake, FileText } from 'lucide-react';
+import { CheckCircle2, PhoneCall, Calendar, ShieldCheck, HeartHandshake, FileText } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 import AppointmentForm from '../components/AppointmentForm/AppointmentForm';

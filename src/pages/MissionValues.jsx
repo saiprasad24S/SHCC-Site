@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Target, Compass, Heart, Shield, Award, Clock, CheckCircle2 } from 'lucide-react';
+import { Target, Compass, CheckCircle2 } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import { aboutData } from '../data/aboutData';
-import { siteData } from '../data/siteData';
 import './AboutUs.css';
 
 export default function MissionValues() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Award, Briefcase, Calendar, Phone, CheckCircle, ShieldCheck } from 'lucide-react';
+import { Briefcase, Phone, CheckCircle, ShieldCheck } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import { aboutData } from '../data/aboutData';
 import { siteData } from '../data/siteData';

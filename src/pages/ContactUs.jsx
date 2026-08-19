@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import ContactForm from '../components/ContactForm/ContactForm';
 import { siteData } from '../data/siteData';
