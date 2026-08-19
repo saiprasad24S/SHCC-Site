@@ -1,0 +1,43 @@
+.not-found-card {
+  max-width: 680px;
+  margin: 40px auto;
+  padding: 60px 40px;
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.not-found-icon {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.not-found-code {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1;
+  margin-bottom: 10px;
+  font-family: var(--font-heading);
+}
+
+.not-found-title {
+  font-size: 2rem;
+  color: var(--heading-color);
+  margin-bottom: 14px;
+}
+
+.not-found-desc {
+  font-size: 15px;
+  color: var(--body-color);
+  max-width: 480px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.not-found-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,129 @@
+/* Responsive Breakpoints & Mobile Typography System */
+
+/* Extra Large Screens (> 1200px) */
+@media (min-width: 1201px) {
+  .container {
+    max-width: var(--container-boxed);
+  }
+}
+
+/* Medium to Large Screens (992px to 1200px) */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 980px;
+  }
+}
+
+/* Tablets (768px to 991px) */
+@media (max-width: 991px) {
+  .container {
+    max-width: 740px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .section-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  .section-padding-lg {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+  
+  h1 {
+    font-size: 42px;
+    letter-spacing: -1.2px;
+  }
+  
+  h2 {
+    font-size: 34px;
+    letter-spacing: -0.9px;
+  }
+  
+  h3 {
+    font-size: 24px;
+  }
+  
+  body, p {
+    font-size: 16.5px;
+  }
+}
+
+/* Mobile Devices (<= 767px) */
+@media (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  
+  .section-padding {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .section-padding-lg {
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+  
+  h1 {
+    font-size: 34px;
+    line-height: 1.18;
+    letter-spacing: -1px;
+  }
+  
+  h2 {
+    font-size: 28px;
+    line-height: 1.24;
+    letter-spacing: -0.8px;
+  }
+  
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  
+  body, p {
+    font-size: 16px;
+    line-height: 1.68;
+  }
+  
+  .btn-hero,
+  .btn-drawer-block {
+    width: 100%;
+  }
+}
+
+/* Small Mobile (<= 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  h1 {
+    font-size: 29px;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  h3 {
+    font-size: 20px;
+  }
+  
+  body, p {
+    font-size: 15.5px;
+  }
+  
+  .btn-group-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+}

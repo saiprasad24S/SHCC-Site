@@ -1,0 +1,76 @@
+.breadcrumb-banner {
+  background: linear-gradient(135deg, #004E9E 0%, #050204 100%);
+  padding: 75px 0 55px;
+  text-align: center;
+  color: #FFFFFF;
+  position: relative;
+}
+
+[data-theme="dark"] .breadcrumb-banner {
+  background: linear-gradient(135deg, #0F1A34 0%, #060B18 100%);
+}
+
+.breadcrumb-page-title {
+  color: #FFFFFF;
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -1.2px;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.breadcrumb-page-subtitle {
+  font-size: 17.5px;
+  color: #D3E2F4;
+  max-width: 750px;
+  margin: 0 auto 18px;
+  line-height: 1.65;
+}
+
+.breadcrumb-nav-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+.breadcrumb-list-item a {
+  color: #D3E2F4;
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb-list-item a:hover {
+  color: var(--secondary-color);
+}
+
+.breadcrumb-list-item.active span {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.breadcrumb-separator-item {
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .breadcrumb-banner {
+    padding: 55px 0 40px;
+  }
+  
+  .breadcrumb-page-title {
+    font-size: 32px;
+    letter-spacing: -0.8px;
+  }
+  
+  .breadcrumb-page-subtitle {
+    font-size: 15.5px;
+  }
+}

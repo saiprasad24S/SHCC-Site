@@ -1,0 +1,358 @@
+.service-intro-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.service-intro-content .lead-desc {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.75;
+}
+
+.service-quick-cta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.service-hero-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Offerings Grid */
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.offering-card {
+  padding: 36px 30px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all var(--transition-normal);
+}
+
+.offering-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-dark);
+}
+
+.offering-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.offering-title {
+  font-size: 22px;
+  color: var(--heading-color);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.offering-desc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.68;
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+/* How It Works Grid */
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.how-step-card {
+  padding: 30px 24px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  position: relative;
+}
+
+.how-step-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.how-step-title {
+  font-size: 17px;
+  color: var(--heading-color);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+/* Equipment & Vaccine Tags Grid */
+.equipment-tags-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.equipment-tag-card {
+  padding: 18px 22px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--heading-color);
+  box-shadow: var(--card-shadow);
+}
+
+.eq-check-icon {
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+/* Why Section */
+.service-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.service-feature-img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-why-content .why-text {
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.service-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.benefit-list-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16.5px;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.benefit-check {
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.why-call-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--bg-secondary);
+  padding: 18px 24px;
+  border-radius: var(--border-radius-sm);
+  border-left: 4px solid var(--primary-color);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.why-call-box strong {
+  display: block;
+  font-size: 15px;
+  color: var(--heading-color);
+  margin-bottom: 3px;
+}
+
+.why-call-box p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* Service Bottom CTA */
+.service-bottom-cta-box {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.service-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+/* Booking Section */
+.booking-split-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.booking-info-pane p {
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.booking-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.perk-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  flex-shrink: 0;
+}
+
+.emergency-call-card {
+  padding: 24px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.emergency-call-card h4 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.emergency-call-card p {
+  font-size: 14.5px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+}
+
+.emergency-call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-color);
+  transition: color 0.2s ease;
+}
+
+.emergency-call-btn:hover {
+  color: var(--secondary-color);
+}
+
+.form-card-wrapper {
+  padding: 36px 32px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.form-card-title {
+  font-size: 26px;
+  color: var(--heading-color);
+  margin-bottom: 6px;
+}
+
+.form-card-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1024px) {
+  .offerings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .how-it-works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .service-intro-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-why-grid {
+    grid-template-columns: 1fr;
+  }
+  .booking-split-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .offerings-grid {
+    grid-template-columns: 1fr;
+  }
+  .how-it-works-grid {
+    grid-template-columns: 1fr;
+  }
+  .equipment-tags-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-hero-img {
+    height: 280px;
+  }
+  .form-card-wrapper {
+    padding: 26px 20px;
+  }
+}

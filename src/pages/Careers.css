@@ -1,0 +1,133 @@
+.career-offer-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.career-offer-card {
+  padding: 38px 34px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.career-offer-title {
+  font-size: 26px;
+  color: var(--heading-color);
+  margin-bottom: 22px;
+  line-height: 1.25;
+}
+
+.career-offer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.career-offer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.offer-check-icon {
+  color: var(--primary-color);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.career-email-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--bg-secondary);
+  padding: 18px 24px;
+  border-radius: var(--border-radius-sm);
+  border-left: 4px solid var(--primary-color);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.career-mail-icon {
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.email-prompt-lbl {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.email-prompt-val {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-color);
+  transition: color 0.2s ease;
+}
+
+.email-prompt-val:hover {
+  color: var(--secondary-color);
+}
+
+/* Form Card */
+.career-form-card {
+  padding: 38px 34px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.career-form-header {
+  margin-bottom: 24px;
+}
+
+.career-form-title {
+  font-size: 26px;
+  color: var(--heading-color);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.career-form-subtext {
+  font-size: 15.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* CTA */
+.careers-cta-box {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cta-desc-lead {
+  font-size: 18px;
+  line-height: 1.72;
+  margin-bottom: 28px;
+}
+
+.careers-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+  .career-offer-grid {
+    grid-template-columns: 1fr;
+  }
+}

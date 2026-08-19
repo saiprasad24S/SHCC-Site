@@ -1,0 +1,189 @@
+.hero-section {
+  position: relative;
+  min-height: 620px;
+  background-image: url('../../assets/images/health-visitor-and-senior-man-during-home-visit-.jpg');
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  padding: 110px 0 100px;
+  color: #FFFFFF;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(5, 2, 4, 0.92) 0%, rgba(0, 78, 158, 0.72) 55%, rgba(10, 17, 36, 0.45) 100%);
+  z-index: 1;
+}
+
+[data-theme="dark"] .hero-bg-overlay {
+  background: linear-gradient(90deg, rgba(3, 7, 18, 0.95) 0%, rgba(15, 26, 52, 0.85) 55%, rgba(6, 11, 24, 0.65) 100%);
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(222, 52, 127, 0.25);
+  border: 1px solid rgba(222, 52, 127, 0.6);
+  color: #ffb8d4;
+  padding: 7px 16px;
+  border-radius: var(--border-radius-pill);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 22px;
+  font-family: var(--font-body);
+}
+
+.hero-badge-icon {
+  color: var(--secondary-color);
+}
+
+.hero-title {
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 55px;
+  font-weight: 600;
+  line-height: 1.12em;
+  letter-spacing: -1.8px;
+  margin-bottom: 22px;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 18.5px;
+  font-weight: 400;
+  color: #F1F5F9;
+  line-height: 1.68em;
+  margin-bottom: 34px;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 38px;
+  flex-wrap: wrap;
+}
+
+.btn-hero {
+  padding: 15px 34px;
+  font-size: 14.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  border-radius: var(--border-radius-sm);
+}
+
+.btn-hero-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(var(--primary-rgb), 0.35);
+}
+
+.btn-hero-primary:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+
+.btn-outline-white:hover {
+  background-color: #FFFFFF;
+  color: var(--primary-color);
+  border-color: #FFFFFF;
+}
+
+.hero-highlights {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  flex-wrap: wrap;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #F8FAFC;
+  font-family: var(--font-body);
+}
+
+.highlight-icon {
+  color: var(--secondary-color);
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    min-height: 520px;
+    padding: 80px 0 70px;
+  }
+  
+  .hero-title {
+    font-size: 42px;
+    letter-spacing: -1.2px;
+  }
+  
+  .hero-subtitle {
+    font-size: 16.5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0 50px;
+    min-height: 460px;
+  }
+  
+  .hero-title {
+    font-size: 34px;
+    letter-spacing: -1px;
+    line-height: 1.18em;
+  }
+  
+  .hero-subtitle {
+    font-size: 15.5px;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  
+  .btn-hero {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .hero-highlights {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

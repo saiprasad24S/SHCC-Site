@@ -1,0 +1,131 @@
+.appointment-page-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 55px;
+  align-items: flex-start;
+}
+
+.appointment-lead {
+  font-size: 17.5px;
+  line-height: 1.72;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+.trust-features-card {
+  padding: 32px 28px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 26px;
+}
+
+.trust-card-title {
+  font-size: 22px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.trust-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.trust-steps-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.step-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.trust-steps-list strong {
+  display: block;
+  font-size: 16px;
+  color: var(--heading-color);
+  margin-bottom: 3px;
+}
+
+.trust-steps-list p {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  line-height: 1.55;
+}
+
+.appointment-hotline-box {
+  padding: 26px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface-card);
+  border-left: 4px solid var(--secondary-color);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.hotline-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--secondary-light);
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hotline-text h4 {
+  font-size: 18px;
+  color: var(--heading-color);
+  margin-bottom: 3px;
+}
+
+.hotline-text p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.hotline-phone-link {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  font-family: var(--font-heading);
+}
+
+.appointment-form-card {
+  padding: 38px 34px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+@media (max-width: 991px) {
+  .appointment-page-grid {
+    grid-template-columns: 1fr;
+  }
+  .appointment-form-card {
+    padding: 26px 20px;
+  }
+}

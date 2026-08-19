@@ -1,0 +1,89 @@
+.appointment-booking-form {
+  background: var(--white);
+  padding: 35px 30px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.label-icon {
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 4px;
+  color: var(--primary-color);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.appointment-success-box {
+  background: var(--white);
+  padding: 45px 30px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid #d0e3ff;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.success-icon-wrap {
+  margin-bottom: 18px;
+  display: inline-flex;
+  padding: 12px;
+  border-radius: 50%;
+  background-color: var(--light-background);
+}
+
+.appointment-success-box h3 {
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.appointment-success-box p {
+  font-size: 14.5px;
+  color: var(--body-color);
+  max-width: 540px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+.success-details-summary {
+  background-color: var(--light-background);
+  padding: 16px;
+  border-radius: var(--border-radius-sm);
+  margin-bottom: 25px;
+  font-size: 13.5px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+@media (max-width: 768px) {
+  .appointment-booking-form {
+    padding: 24px 18px;
+  }
+  
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

@@ -1,0 +1,108 @@
+.contact-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 55px;
+  align-items: flex-start;
+}
+
+.contact-lead-text {
+  font-size: 17.5px;
+  line-height: 1.72;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+.contact-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-detail-card {
+  padding: 24px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-normal);
+}
+
+.contact-detail-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-dark);
+}
+
+.contact-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-card-text h4 {
+  font-size: 19px;
+  color: var(--heading-color);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.contact-card-text p {
+  font-size: 15.5px;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.contact-link-highlight {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.contact-link-highlight:hover {
+  color: var(--secondary-color);
+}
+
+.contact-form-card {
+  padding: 38px 34px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.form-box-title {
+  font-size: 26px;
+  color: var(--heading-color);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.form-box-subtitle {
+  font-size: 15.5px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.map-container-frame {
+  width: 100%;
+  line-height: 0;
+}
+
+@media (max-width: 991px) {
+  .contact-split-layout {
+    grid-template-columns: 1fr;
+  }
+  .contact-form-card {
+    padding: 26px 20px;
+  }
+}
