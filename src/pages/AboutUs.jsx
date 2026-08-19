@@ -10,11 +10,17 @@ import {
   Target,
   CheckCircle2,
   Calendar,
-  PhoneCall
+  PhoneCall,
+  UserCheck,
+  Compass,
+  History as HistoryIcon,
+  Activity,
+  FileText,
+  ArrowRight
 } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
-import SectionHeading from '../components/SectionHeading/SectionHeading';
 import { siteData } from '../data/siteData';
+import { aboutData } from '../data/aboutData';
 import { statisticsData } from '../data/testimonialsData';
 
 import aboutImg1 from '../assets/images/skandan-aboutus-2.jpg';
@@ -24,33 +30,90 @@ import whyChooseImg from '../assets/images/senior-woman-talking-to-caring-nurse-
 import './AboutUs.css';
 
 export default function AboutUs() {
+  const who = aboutData.whoAreWe;
+
+  const aboutSections = [
+    {
+      title: "K Mahindra",
+      subtitle: "Co-Founder & Director of Operations",
+      desc: "Healthcare operations and strategic delivery leadership driving patient-first home medical networks.",
+      path: "/about-us/k-mahindra",
+      icon: UserCheck
+    },
+    {
+      title: "K Nakshitthra",
+      subtitle: "Co-Founder & Clinical Director",
+      desc: "Clinical nursing governance and empathetic patient advocacy ensuring high-touch compassionate care.",
+      path: "/about-us/k-nakshitthra",
+      icon: Heart
+    },
+    {
+      title: "Our Mission and Values",
+      subtitle: "Vision, Mission & Principles",
+      desc: "Upholding clinical excellence, integrity, 24/7 reliability, and patient dignity in every home visit.",
+      path: "/about-us/mission-and-values",
+      icon: Compass
+    },
+    {
+      title: "Our History",
+      subtitle: "The Healthcare Journey",
+      desc: "Founded in 2021 in Hyderabad, expanding to comprehensive doorstep clinical services across Telangana.",
+      path: "/about-us/history",
+      icon: HistoryIcon
+    },
+    {
+      title: "Capabilities",
+      subtitle: "Clinical Infrastructure",
+      desc: "ICU bedside nursing, physiotherapy, doorstep lab collections, pharmacy delivery, and doctor on call.",
+      path: "/about-us/capabilities",
+      icon: Activity
+    },
+    {
+      title: "Reports and Policies",
+      subtitle: "Governance & Transparency",
+      desc: "Infection control, sterile SOPs, patient privacy compliance, and caregiver credential verifications.",
+      path: "/about-us/reports-and-policies",
+      icon: FileText
+    }
+  ];
+
   return (
     <div className="about-page">
       <PageBanner
-        title="About us"
+        title="Who Are We?"
+        subtitle="About Skandan Home Carre Cclinic"
         breadcrumbs={[
           { label: "Home", path: "/" },
-          { label: "About us", path: "/about-us" }
+          { label: "About us", path: "/about-us" },
+          { label: "Who Are We?", path: "/about-us" }
         ]}
       />
 
-      {/* Main Story */}
-      <section className="about-main-section section-padding">
+      {/* Main Story / Who Are We */}
+      <section id="who-are-we" className="about-main-section section-padding">
         <div className="container">
           <div className="about-main-grid">
             <div className="about-main-content">
-              <span className="section-badge-subtitle">Our Background</span>
-              <h2 className="section-main-title">About Skandan Home Carre Cclinic</h2>
-              <p className="about-lead-p">
-                At <strong>{siteData.name}</strong>, established in <strong>{siteData.establishedYear}</strong>, we are committed to delivering professional, compassionate, and personalized healthcare right to your doorstep—anywhere in India.
-              </p>
-              <p>
-                Our goal is to bridge the gap between hospital care and home comfort, making healthcare more accessible, reliable, and human. Whether you need skilled nursing care, diagnostic testing, pharmacy support, or immunization services, our trained medical team brings hospital-quality care directly to you—where you feel safest and most at ease.
-              </p>
+              <span className="section-badge-subtitle">Who Are We?</span>
+              <h2 className="section-main-title">{who.title}</h2>
+              <p className="about-lead-p">{who.lead}</p>
+              
+              {who.description.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+
+              <div className="about-features-list" style={{ margin: '26px 0 32px' }}>
+                {who.highlights.map((hl, i) => (
+                  <div key={i} className="about-feature-item">
+                    <CheckCircle2 size={20} className="feat-check-icon" />
+                    <span>{hl}</span>
+                  </div>
+                ))}
+              </div>
 
               {/* Vision & Mission Cards */}
               <div className="vision-mission-cards">
-                <div className="vm-card">
+                <div className="vm-card card">
                   <div className="vm-icon-box vision-box">
                     <Eye size={24} />
                   </div>
@@ -62,7 +125,7 @@ export default function AboutUs() {
                   </div>
                 </div>
 
-                <div className="vm-card">
+                <div className="vm-card card">
                   <div className="vm-icon-box mission-box">
                     <Target size={24} />
                   </div>
@@ -91,8 +154,59 @@ export default function AboutUs() {
         </div>
       </section>
 
+      {/* Explore About Us Sub-Sections Grid */}
+      <section className="section-padding bg-light">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '45px' }}>
+            <span className="section-badge-subtitle">Organization Structure</span>
+            <h2 className="section-main-title">Explore Skandan Home Carre</h2>
+            <p className="about-lead-p" style={{ maxWidth: '750px', margin: '0 auto' }}>
+              Learn more about our leadership, history, capabilities, and clinical governance standards.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '26px' }}>
+            {aboutSections.map((sec, idx) => {
+              const IconComponent = sec.icon;
+              return (
+                <Link key={idx} to={sec.path} className="card" style={{ padding: '34px 28px', display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
+                  <div style={{
+                    width: '54px',
+                    height: '54px',
+                    borderRadius: 'var(--border-radius-sm)',
+                    backgroundColor: idx % 2 === 0 ? 'var(--primary-light)' : 'var(--secondary-light)',
+                    color: idx % 2 === 0 ? 'var(--primary-color)' : 'var(--secondary-color)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '18px'
+                  }}>
+                    <IconComponent size={26} />
+                  </div>
+
+                  <h3 style={{ fontSize: '22px', color: 'var(--heading-color)', marginBottom: '4px', lineHeight: '1.3' }}>
+                    {sec.title}
+                  </h3>
+                  <span style={{ fontSize: '13px', fontWeight: '600', color: 'var(--secondary-color)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '12px' }}>
+                    {sec.subtitle}
+                  </span>
+                  <p style={{ fontSize: '15.5px', color: 'var(--text-secondary)', lineHeight: '1.65', marginBottom: '20px', flexGrow: 1 }}>
+                    {sec.desc}
+                  </p>
+                  
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.8px', color: 'var(--primary-color)', marginTop: 'auto' }}>
+                    <span>Learn More</span>
+                    <ArrowRight size={16} />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Why They Choose Us Section */}
-      <section className="about-why-section section-padding bg-light">
+      <section className="about-why-section section-padding">
         <div className="container">
           <div className="about-why-grid">
             <div className="about-why-content">
@@ -171,12 +285,12 @@ export default function AboutUs() {
       </section>
 
       {/* Bottom CTA Banner */}
-      <section className="about-cta-section section-padding-sm bg-primary text-center">
+      <section className="about-cta-section text-center">
         <div className="container">
           <div className="about-cta-box">
             <span className="cta-mini-tag text-white">Your Health, Our Priority</span>
             <h2 className="text-white cta-title-lg">
-              At Skandan Home Carre Cclinic, we understand that true healing begins at home. That’s why we focus not just on treatment, but on comfort, trust, and continuity of care— anywhere in India .
+              At Skandan Home Carre Clinic, we understand that true healing begins at home. That’s why we focus not just on treatment, but on comfort, trust, and continuity of care— anywhere in India.
             </h2>
             <div className="about-cta-actions">
               <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">

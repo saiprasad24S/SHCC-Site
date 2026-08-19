@@ -117,6 +117,19 @@
 }
 
 /* CTA */
+.services-cta-section {
+  background: linear-gradient(135deg, #004E9E 0%, #002d5b 100%);
+  color: #FFFFFF;
+  padding: 70px 0;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .services-cta-section {
+  background: linear-gradient(135deg, #0F1A34 0%, #060B18 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .services-cta-title {
   color: #FFFFFF;
   font-size: 38px;

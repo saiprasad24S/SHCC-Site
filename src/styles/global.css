@@ -159,6 +159,12 @@ ul, ol {
   color: #FFFFFF;
 }
 
+[data-theme="dark"] .bg-primary {
+  background: linear-gradient(135deg, #0F1A34 0%, #060B18 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .bg-white {
   background-color: var(--surface-card);
 }

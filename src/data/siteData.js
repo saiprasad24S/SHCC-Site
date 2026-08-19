@@ -1,5 +1,5 @@
 export const siteData = {
-  name: "Skandan Home Carre Cclinic",
+  name: "Skandan Home Carre Clinic",
   legalName: "Skandan Home Carre Cclinic LLP",
   tagline: "Compassionate Home Health Care at Your Doorstep",
   establishedYear: 2021,
@@ -25,7 +25,6 @@ export const siteData = {
 
   navLinks: [
     { label: "Home", path: "/" },
-    { label: "About us", path: "/about-us" },
     {
       label: "Services",
       path: "/services",
@@ -42,11 +41,14 @@ export const siteData = {
     },
     { label: "Events", path: "/events" },
     { label: "Careers", path: "/careers" },
-    { label: "Contact us", path: "/contact-us" }
+    { label: "Contact us", path: "/contact-us" },
+    { label: "Who Are We?", path: "/about-us" }
   ],
 
   quickLinks: [
-    { label: "About us", path: "/about-us" },
+    { label: "Who Are We?", path: "/about-us" },
+    { label: "Our Mission & Values", path: "/about-us/mission-and-values" },
+    { label: "Capabilities", path: "/about-us/capabilities" },
     { label: "Events", path: "/events" },
     { label: "Careers", path: "/careers" },
     { label: "Contact us", path: "/contact-us" }

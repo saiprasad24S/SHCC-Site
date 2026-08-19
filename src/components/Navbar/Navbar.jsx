@@ -9,38 +9,53 @@ import './Navbar.css';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
-  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [openMobileDropdowns, setOpenMobileDropdowns] = useState({
+    'About us': false,
+    'Services': false
+  });
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 40) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile drawer on route change
+  // Close menus on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    setIsServicesDropdownOpen(false);
-    setIsMobileServicesOpen(false);
+    setActiveDropdown(null);
   }, [location.pathname]);
+
+  const toggleMobileDropdown = (label) => {
+    setOpenMobileDropdowns((prev) => ({
+      ...prev,
+      [label]: !prev[label]
+    }));
+  };
+
+  const isLinkActive = (link) => {
+    if (link.path === '/') return location.pathname === '/';
+    return location.pathname.startsWith(link.path);
+  };
 
   return (
     <header className={`site-header ${isScrolled ? 'is-sticky' : ''}`}>
       <div className="header-container">
-        {/* Brand Logo */}
+        {/* Brand Logo - Far Left Placement */}
         <div className="header-logo-column">
           <Link to="/" className="site-logo" aria-label="Skandan Home Carre Home">
             <img
               src={logoImg}
-              alt="Skandan Home Carre Cclinic"
+              alt="Skandan Home Carre Clinic"
               className="logo-image"
             />
           </Link>
@@ -51,28 +66,35 @@ export default function Navbar() {
           <ul className="nav-menu-list">
             {siteData.navLinks.map((link) => {
               if (link.dropdown) {
+                const isOpen = activeDropdown === link.label;
+                const isActive = isLinkActive(link);
+
                 return (
                   <li
                     key={link.label}
                     className="nav-menu-item dropdown-parent"
-                    onMouseEnter={() => setIsServicesDropdownOpen(true)}
-                    onMouseLeave={() => setIsServicesDropdownOpen(false)}
+                    onMouseEnter={() => setActiveDropdown(link.label)}
+                    onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <NavLink
                       to={link.path}
-                      className={({ isActive }) =>
-                        `nav-menu-link ${location.pathname.startsWith('/services') ? 'active' : ''}`
-                      }
+                      className={`nav-menu-link ${isActive ? 'active' : ''}`}
                     >
                       <span>{link.label}</span>
-                      <ChevronDown size={13} className={`dropdown-chevron ${isServicesDropdownOpen ? 'open' : ''}`} />
+                      <ChevronDown size={13} className={`dropdown-chevron ${isOpen ? 'open' : ''}`} />
                     </NavLink>
 
-                    {/* Dropdown Menu */}
-                    <ul className={`nav-dropdown-menu ${isServicesDropdownOpen ? 'visible' : ''}`}>
+                    {/* Dropdown Sub-menu */}
+                    <ul className={`nav-dropdown-menu ${isOpen ? 'visible' : ''}`}>
                       {link.dropdown.map((subItem) => (
                         <li key={subItem.path} className="dropdown-menu-item">
-                          <NavLink to={subItem.path} className="dropdown-menu-link">
+                          <NavLink
+                            to={subItem.path}
+                            className={({ isActive: isSubActive }) =>
+                              `dropdown-menu-link ${isSubActive ? 'active' : ''}`
+                            }
+                            end={subItem.path === '/about-us'}
+                          >
                             {subItem.label}
                           </NavLink>
                         </li>
@@ -124,23 +146,28 @@ export default function Navbar() {
           <ul className="mobile-menu-list">
             {siteData.navLinks.map((link) => {
               if (link.dropdown) {
+                const isMobileOpen = !!openMobileDropdowns[link.label];
                 return (
                   <li key={link.label} className="mobile-menu-item">
                     <div
                       className="mobile-dropdown-header"
-                      onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                      onClick={() => toggleMobileDropdown(link.label)}
                     >
                       <span className="mobile-link-text">{link.label}</span>
                       <ChevronDown
                         size={18}
-                        className={`mobile-chevron-icon ${isMobileServicesOpen ? 'rotated' : ''}`}
+                        className={`mobile-chevron-icon ${isMobileOpen ? 'rotated' : ''}`}
                       />
                     </div>
-                    {isMobileServicesOpen && (
+                    {isMobileOpen && (
                       <ul className="mobile-sub-list">
                         {link.dropdown.map((subItem) => (
                           <li key={subItem.path} className="mobile-sub-item">
-                            <NavLink to={subItem.path} className="mobile-sub-link">
+                            <NavLink
+                              to={subItem.path}
+                              className="mobile-sub-link"
+                              end={subItem.path === '/about-us'}
+                            >
                               {subItem.label}
                             </NavLink>
                           </li>
@@ -150,6 +177,7 @@ export default function Navbar() {
                   </li>
                 );
               }
+
               return (
                 <li key={link.path} className="mobile-menu-item">
                   <NavLink

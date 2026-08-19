@@ -67,7 +67,7 @@ export default function Careers() {
       </section>
 
       {/* Bottom CTA Banner */}
-      <section className="careers-cta-section section-padding-sm bg-primary text-center">
+      <section className="careers-cta-section text-center">
         <div className="container">
           <div className="careers-cta-box">
             <span className="cta-mini-tag text-white">Join Our Mission</span>

@@ -69,7 +69,7 @@ export default function ServicesList() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="services-cta-section bg-primary text-center section-padding-sm">
+      <section className="services-cta-section text-center">
         <div className="container">
           <h2 className="services-cta-title">Need Immediate Medical Assistance at Home?</h2>
           <p className="services-cta-desc">

@@ -12,6 +12,12 @@ import FloatingActions from './components/FloatingActions/FloatingActions';
 // Pages
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
+import KMahindra from './pages/KMahindra';
+import KNakshitthra from './pages/KNakshitthra';
+import MissionValues from './pages/MissionValues';
+import History from './pages/History';
+import Capabilities from './pages/Capabilities';
+import ReportsPolicies from './pages/ReportsPolicies';
 import ServicesList from './pages/ServicesList';
 import NursingServices from './pages/NursingServices';
 import CareGivers from './pages/CareGivers';
@@ -64,8 +70,18 @@ export default function App() {
             {/* Home */}
             <Route path="/" element={<Home />} />
             
-            {/* About Us */}
+            {/* About Us & Who Are We */}
             <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/who-are-we" element={<AboutUs />} />
+            <Route path="/about-us/who-are-we" element={<AboutUs />} />
+            <Route path="/about-us/k-mahindra" element={<KMahindra />} />
+            <Route path="/about-us/k-nakshitthra" element={<KNakshitthra />} />
+            <Route path="/about-us/mission-and-values" element={<MissionValues />} />
+            <Route path="/about-us/our-mission-and-values" element={<MissionValues />} />
+            <Route path="/about-us/history" element={<History />} />
+            <Route path="/about-us/our-history" element={<History />} />
+            <Route path="/about-us/capabilities" element={<Capabilities />} />
+            <Route path="/about-us/reports-and-policies" element={<ReportsPolicies />} />
             
             {/* Services Overview */}
             <Route path="/services" element={<ServicesList />} />
