@@ -1,0 +1,11 @@
+.magnetic-btn-wrapper {
+  display: inline-flex;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-btn-wrapper {
+    transform: none !important;
+  }
+}

@@ -4,6 +4,8 @@ import { CheckCircle2, PhoneCall, Calendar, ArrowRight } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 import ServiceIcon from '../components/ServiceIcon/ServiceIcon';
+import TiltCard from '../components/InteractiveCard/TiltCard';
+import MagneticButton from '../components/MagneticButton/MagneticButton';
 import { servicesData, serviceCategories } from '../data/servicesData';
 import { siteData } from '../data/siteData';
 import './ServicesList.css';
@@ -59,45 +61,47 @@ export default function ServicesList() {
 
           <div className="services-overview-grid">
             {filteredServices.map((srv) => (
-              <div key={srv.id} className="service-overview-card card">
-                <div className="srv-card-media">
-                  <img src={srv.coverImage || srv.heroImage} alt={srv.title} className="srv-card-img" />
-                  <span className="srv-card-badge">{srv.categoryName}</span>
-                  {srv.isFeatured && <span className="srv-featured-badge">Featured</span>}
-                </div>
+              <div key={srv.id} className="reveal-on-scroll">
+                <TiltCard maxRotation={4} scale={1.015} className="service-overview-card card">
+                  <div className="srv-card-media">
+                    <img src={srv.coverImage || srv.heroImage} alt={srv.title} className="srv-card-img" />
+                    <span className="srv-card-badge">{srv.categoryName}</span>
+                    {srv.isFeatured && <span className="srv-featured-badge">Featured</span>}
+                  </div>
 
-                <div className="srv-card-content">
-                  <div className="srv-card-icon-title">
-                    <div className="srv-icon-box">
-                      <ServiceIcon name={srv.iconName} size={22} />
+                  <div className="srv-card-content">
+                    <div className="srv-card-icon-title">
+                      <div className="srv-icon-box">
+                        <ServiceIcon name={srv.iconName} size={22} />
+                      </div>
+                      <h3 className="srv-card-title">{srv.title}</h3>
                     </div>
-                    <h3 className="srv-card-title">{srv.title}</h3>
-                  </div>
 
-                  <p className="srv-card-desc">{srv.shortDescription}</p>
+                    <p className="srv-card-desc">{srv.shortDescription}</p>
 
-                  <div className="srv-card-offerings-preview">
-                    <span className="preview-label">Key Capabilities:</span>
-                    <ul className="preview-list">
-                      {srv.offerings.slice(0, 3).map((off, idx) => (
-                        <li key={idx}>
-                          <CheckCircle2 size={15} className="check-bullet-icon" />
-                          <span>{off.title}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    <div className="srv-card-offerings-preview">
+                      <span className="preview-label">Key Capabilities:</span>
+                      <ul className="preview-list">
+                        {srv.offerings.slice(0, 3).map((off, idx) => (
+                          <li key={idx}>
+                            <CheckCircle2 size={15} className="check-bullet-icon" />
+                            <span>{off.title}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  <div className="srv-card-actions">
-                    <Link to={`/services/${srv.slug}`} className="btn btn-outline btn-sm">
-                      <span>View Details</span>
-                      <ArrowRight size={14} />
-                    </Link>
-                    <Link to="/book-an-appointment" className="btn btn-primary btn-sm">
-                      <span>Book Service</span>
-                    </Link>
+                    <div className="srv-card-actions">
+                      <Link to={`/services/${srv.slug}`} className="btn btn-outline btn-sm">
+                        <span>View Details</span>
+                        <ArrowRight size={14} />
+                      </Link>
+                      <Link to="/book-an-appointment" className="btn btn-primary btn-sm">
+                        <span>Book Service</span>
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                </TiltCard>
               </div>
             ))}
           </div>
@@ -115,14 +119,19 @@ export default function ServicesList() {
             Book a skilled nurse, doctor, or diagnostic test now with just a call. Our care team is available 24/7.
           </p>
           <div className="services-cta-buttons">
-            <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">
-              <Calendar size={18} />
-              <span>Book an Appointment</span>
-            </Link>
-            <a href={siteData.contact.phoneHref} className="btn btn-outline-white btn-lg">
-              <PhoneCall size={18} />
-              <span>Call {siteData.contact.phone}</span>
-            </a>
+            <MagneticButton maxDistance={4}>
+              <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">
+                <Calendar size={18} />
+                <span>Book an Appointment</span>
+              </Link>
+            </MagneticButton>
+
+            <MagneticButton maxDistance={4}>
+              <a href={siteData.contact.phoneHref} className="btn btn-outline-white btn-lg">
+                <PhoneCall size={18} />
+                <span>Call {siteData.contact.phone}</span>
+              </a>
+            </MagneticButton>
           </div>
         </div>
       </section>

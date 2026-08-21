@@ -1,0 +1,60 @@
+.service-icon-svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+  will-change: transform;
+}
+
+.service-icon-heartpulse {
+  animation: subtleHeartbeat 3.2s ease-in-out infinite;
+}
+
+.service-icon-activity {
+  animation: subtleActivity 4s ease-in-out infinite;
+}
+
+.service-icon-stethoscope {
+  animation: subtleSway 4.5s ease-in-out infinite;
+}
+
+@keyframes subtleHeartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.08);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes subtleActivity {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes subtleSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-icon-heartpulse,
+  .service-icon-activity,
+  .service-icon-stethoscope {
+    animation: none !important;
+  }
+}

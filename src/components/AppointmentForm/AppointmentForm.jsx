@@ -109,7 +109,7 @@ export default function AppointmentForm({ defaultService = '', onSuccess }) {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            placeholder="e.g. Ramesh Kumar"
+            placeholder="Enter patient or contact name"
             className={`form-control ${errors.fullName ? 'is-invalid' : ''}`}
             required
           />
@@ -127,7 +127,7 @@ export default function AppointmentForm({ defaultService = '', onSuccess }) {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="e.g. +91 98765 43210"
+            placeholder="Enter phone number"
             className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
             required
           />
@@ -147,7 +147,7 @@ export default function AppointmentForm({ defaultService = '', onSuccess }) {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="e.g. ramesh@example.com"
+            placeholder="Enter email address"
             className={`form-control ${errors.email ? 'is-invalid' : ''}`}
             required
           />
@@ -227,7 +227,7 @@ export default function AppointmentForm({ defaultService = '', onSuccess }) {
           name="address"
           value={formData.address}
           onChange={handleChange}
-          placeholder="Flat / House No, Street, Locality, City (e.g. Madhapur, Hyderabad)"
+          placeholder="Flat / House No, Street, Locality, City"
           className={`form-control ${errors.address ? 'is-invalid' : ''}`}
           required
         />

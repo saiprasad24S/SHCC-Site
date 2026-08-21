@@ -21,6 +21,9 @@ import {
 } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
+import TiltCard from '../components/InteractiveCard/TiltCard';
+import MagneticButton from '../components/MagneticButton/MagneticButton';
+import AnimatedCounter from '../components/AnimatedCounter/AnimatedCounter';
 import { siteData } from '../data/siteData';
 import { aboutData } from '../data/aboutData';
 import { statisticsData } from '../data/testimonialsData';
@@ -101,7 +104,7 @@ export default function AboutUs() {
 
               {/* Vision & Mission Cards */}
               <div className="vision-mission-cards">
-                <div className="vm-card card">
+                <TiltCard maxRotation={4} scale={1.015} className="vm-card card">
                   <div className="vm-icon-box vision-box">
                     <Eye size={24} />
                   </div>
@@ -111,9 +114,9 @@ export default function AboutUs() {
                       To provide high-quality, affordable home healthcare services with compassion and professionalism across India.
                     </p>
                   </div>
-                </div>
+                </TiltCard>
 
-                <div className="vm-card card">
+                <TiltCard maxRotation={4} scale={1.015} className="vm-card card">
                   <div className="vm-icon-box mission-box">
                     <Target size={24} />
                   </div>
@@ -123,7 +126,7 @@ export default function AboutUs() {
                       To be India’s most trusted home healthcare provider, recognized for excellence in clinical care, integrity in service, and patient dignity.
                     </p>
                   </div>
-                </div>
+                </TiltCard>
               </div>
             </div>
 
@@ -154,7 +157,7 @@ export default function AboutUs() {
 
           <div className="about-founders-grid">
             {/* Founder 1: K Mahindra */}
-            <div className="founder-card card">
+            <TiltCard maxRotation={4} scale={1.015} className="founder-card card">
               <div className="founder-header">
                 <div className="founder-avatar-icon">
                   <UserCheck size={28} />
@@ -173,10 +176,10 @@ export default function AboutUs() {
                   <ArrowRight size={15} />
                 </Link>
               </div>
-            </div>
+            </TiltCard>
 
             {/* Founder 2: K Nakshitthra */}
-            <div className="founder-card card">
+            <TiltCard maxRotation={4} scale={1.015} className="founder-card card">
               <div className="founder-header">
                 <div className="founder-avatar-icon" style={{ backgroundColor: 'var(--secondary-light)', color: 'var(--secondary-color)' }}>
                   <Heart size={28} />
@@ -197,7 +200,7 @@ export default function AboutUs() {
                   <ArrowRight size={15} />
                 </Link>
               </div>
-            </div>
+            </TiltCard>
           </div>
         </div>
       </section>
@@ -216,20 +219,22 @@ export default function AboutUs() {
             {organizationPillars.map((sec, idx) => {
               const IconComponent = sec.icon;
               return (
-                <Link key={idx} to={sec.path} className="pillar-card card">
-                  <div className="pillar-icon-box">
-                    <IconComponent size={24} />
-                  </div>
+                <TiltCard key={idx} maxRotation={5} scale={1.02} className="pillar-card card">
+                  <Link to={sec.path} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                    <div className="pillar-icon-box">
+                      <IconComponent size={24} />
+                    </div>
 
-                  <h3 className="pillar-card-title">{sec.title}</h3>
-                  <span className="pillar-card-subtitle">{sec.subtitle}</span>
-                  <p className="pillar-card-desc">{sec.desc}</p>
-                  
-                  <div className="pillar-card-action">
-                    <span>Learn More</span>
-                    <ChevronRight size={16} />
-                  </div>
-                </Link>
+                    <h3 className="pillar-card-title">{sec.title}</h3>
+                    <span className="pillar-card-subtitle">{sec.subtitle}</span>
+                    <p className="pillar-card-desc">{sec.desc}</p>
+                    
+                    <div className="pillar-card-action">
+                      <span>Learn More</span>
+                      <ChevronRight size={16} />
+                    </div>
+                  </Link>
+                </TiltCard>
               );
             })}
           </div>
@@ -304,7 +309,9 @@ export default function AboutUs() {
                 <div className="stats-overlay-grid">
                   {statisticsData.map((st, i) => (
                     <div key={i} className="stat-box">
-                      <div className="stat-val">{st.value}</div>
+                      <div className="stat-val">
+                        <AnimatedCounter value={st.value} />
+                      </div>
                       <div className="stat-lbl">{st.label}</div>
                     </div>
                   ))}
@@ -324,14 +331,19 @@ export default function AboutUs() {
               At Skandan Home Carre Clinic, true healing begins at home with comfort, trust, and continuous clinical oversight.
             </h2>
             <div className="about-cta-actions">
-              <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">
-                <Calendar size={18} />
-                <span>Book an Appointment</span>
-              </Link>
-              <a href={siteData.contact.phoneHref} className="btn btn-outline-white btn-lg">
-                <PhoneCall size={18} />
-                <span>Call {siteData.contact.phone}</span>
-              </a>
+              <MagneticButton maxDistance={4}>
+                <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">
+                  <Calendar size={18} />
+                  <span>Book an Appointment</span>
+                </Link>
+              </MagneticButton>
+
+              <MagneticButton maxDistance={4}>
+                <a href={siteData.contact.phoneHref} className="btn btn-outline-white btn-lg">
+                  <PhoneCall size={18} />
+                  <span>Call {siteData.contact.phone}</span>
+                </a>
+              </MagneticButton>
             </div>
           </div>
         </div>

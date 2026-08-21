@@ -5,13 +5,13 @@
 
 .how-it-works-flow {
   position: relative;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 .how-steps-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 28px;
   position: relative;
 }
 
@@ -33,12 +33,6 @@
   position: relative;
   z-index: 2;
   transition: all var(--transition-normal);
-}
-
-.how-step-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--border-dark);
 }
 
 .how-step-header {
@@ -90,13 +84,33 @@
   flex-grow: 1;
 }
 
-.step-connector-line {
+.step-connector-arrow {
   display: none;
 }
 
 @media (min-width: 1025px) {
-  .how-step-item {
-    position: relative;
+  .step-connector-arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -16px;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .connector-pulse-dot {
+    position: absolute;
+    right: -2px;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 6px var(--secondary-color);
   }
 }
 

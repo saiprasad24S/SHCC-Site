@@ -5,6 +5,8 @@ import 'lenis/dist/lenis.css';
 
 import { ThemeProvider } from './context/ThemeContext';
 
+import ScrollProgress from './components/ScrollProgress/ScrollProgress';
+
 // Layout Components
 import TopBar from './components/TopBar/TopBar';
 import Navbar from './components/Navbar/Navbar';
@@ -67,6 +69,7 @@ export default function App() {
     >
       <ThemeProvider>
         <div className="app-layout">
+          <ScrollProgress />
           <ScrollToTop />
         
           {/* Top Contact Bar */}

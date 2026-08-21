@@ -86,7 +86,7 @@ export default function ContactForm() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="e.g. Rajesh Sharma"
+            placeholder="Enter your full name"
             className={`form-control ${errors.name ? 'is-invalid' : ''}`}
             required
           />
@@ -101,7 +101,7 @@ export default function ContactForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="e.g. +91 98765 43210"
+            placeholder="Enter phone number"
             className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
             required
           />
@@ -118,7 +118,7 @@ export default function ContactForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="e.g. rajesh@gmail.com"
+            placeholder="Enter email address"
             className={`form-control ${errors.email ? 'is-invalid' : ''}`}
             required
           />
@@ -133,7 +133,7 @@ export default function ContactForm() {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            placeholder="e.g. Home Care Service Inquiry"
+            placeholder="Subject of inquiry"
             className="form-control"
           />
         </div>

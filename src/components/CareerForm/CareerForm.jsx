@@ -118,7 +118,7 @@ export default function CareerForm({ defaultRole = '' }) {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="e.g. Swathi Reddy"
+            placeholder="Enter full name"
             className={`form-control ${errors.name ? 'is-invalid' : ''}`}
             required
           />
@@ -133,7 +133,7 @@ export default function CareerForm({ defaultRole = '' }) {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="e.g. +91 98765 43210"
+            placeholder="Enter phone number"
             className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
             required
           />
@@ -150,7 +150,7 @@ export default function CareerForm({ defaultRole = '' }) {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="e.g. swathi@example.com"
+            placeholder="Enter email address"
             className={`form-control ${errors.email ? 'is-invalid' : ''}`}
             required
           />
@@ -165,7 +165,7 @@ export default function CareerForm({ defaultRole = '' }) {
             name="location"
             value={formData.location}
             onChange={handleChange}
-            placeholder="e.g. Hyderabad, Telangana"
+            placeholder="Enter current city / location"
             className={`form-control ${errors.location ? 'is-invalid' : ''}`}
             required
           />
@@ -222,7 +222,7 @@ export default function CareerForm({ defaultRole = '' }) {
           rows="3"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Briefly describe your healthcare qualifications, registrations (e.g. Nursing Council/BPT), and years of clinical experience..."
+          placeholder="Briefly describe your healthcare qualifications, registrations (e.g. Nursing Council/BPT), and clinical experience..."
           className="form-control"
         ></textarea>
       </div>

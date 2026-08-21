@@ -1,6 +1,7 @@
 import React from 'react';
 import { PhoneCall, UserCheck, ShieldCheck, HeartHandshake } from 'lucide-react';
 import SectionHeading from '../SectionHeading/SectionHeading';
+import TiltCard from '../InteractiveCard/TiltCard';
 import './HowItWorks.css';
 
 export default function HowItWorks() {
@@ -47,7 +48,7 @@ export default function HowItWorks() {
               const IconComponent = step.icon;
               return (
                 <div key={idx} className={`how-step-item reveal-on-scroll delay-${idx + 1}`}>
-                  <div className="how-step-card card">
+                  <TiltCard maxRotation={4} scale={1.02} className="how-step-card card">
                     <div className="how-step-header">
                       <span className="step-count-badge">{step.number}</span>
                       <div className="step-icon-wrapper">
@@ -56,10 +57,10 @@ export default function HowItWorks() {
                     </div>
                     <h3 className="how-step-heading">{step.title}</h3>
                     <p className="how-step-text">{step.desc}</p>
-                  </div>
+                  </TiltCard>
                   {idx < steps.length - 1 && (
-                    <div className="step-connector-line" aria-hidden="true">
-                      <div className="connector-dot"></div>
+                    <div className="step-connector-arrow" aria-hidden="true">
+                      <div className="connector-pulse-dot"></div>
                     </div>
                   )}
                 </div>

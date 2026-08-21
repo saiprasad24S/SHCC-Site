@@ -33,12 +33,13 @@ import SectionHeading from '../components/SectionHeading/SectionHeading';
 import HowItWorks from '../components/HowItWorks/HowItWorks';
 import TestimonialCarousel from '../components/Testimonial/TestimonialCarousel';
 import ServiceIcon from '../components/ServiceIcon/ServiceIcon';
+import TiltCard from '../components/InteractiveCard/TiltCard';
+import MagneticButton from '../components/MagneticButton/MagneticButton';
+import AnimatedCounter from '../components/AnimatedCounter/AnimatedCounter';
 import { servicesData, serviceCategories, getFeaturedServices } from '../data/servicesData';
 import { siteData } from '../data/siteData';
 
 // Image imports
-import aboutImg1 from '../assets/images/skandan-aboutus-2.jpg';
-import aboutImg2 from '../assets/images/skanda-4.jpg';
 import whyChooseImg from '../assets/images/senior-woman-talking-to-caring-nurse-at-waiting-room.jpg';
 
 import './Home.css';
@@ -84,7 +85,7 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      {/* 1. Hero Section */}
+      {/* 1. Hero Section with 3D Canvas */}
       <Hero />
 
       {/* 2. Quick Value Proposition Trust Bar */}
@@ -146,37 +147,39 @@ export default function Home() {
 
           <div className="featured-spotlight-grid">
             {featuredServices.map((service, idx) => (
-              <div key={service.id} className={`spotlight-card card reveal-on-scroll delay-${idx + 1}`}>
-                <div className="spotlight-img-wrap">
-                  <img src={service.heroImage} alt={service.title} className="spotlight-img" />
-                  <div className="spotlight-category-tag">{service.categoryName}</div>
-                  <div className="spotlight-badge-chip">{service.badge}</div>
-                </div>
-                <div className="spotlight-content">
-                  <div className="spotlight-header-row">
-                    <div className="spotlight-icon-circle">
-                      <ServiceIcon name={service.iconName} size={22} />
-                    </div>
-                    <h3 className="spotlight-title">{service.title}</h3>
+              <div key={service.id} className={`reveal-on-scroll delay-${idx + 1}`}>
+                <TiltCard maxRotation={4} scale={1.015} className="spotlight-card card">
+                  <div className="spotlight-img-wrap">
+                    <img src={service.heroImage} alt={service.title} className="spotlight-img" />
+                    <div className="spotlight-category-tag">{service.categoryName}</div>
+                    <div className="spotlight-badge-chip">{service.badge}</div>
                   </div>
-                  <p className="spotlight-desc">{service.shortDescription}</p>
-                  
-                  <div className="spotlight-highlights-list">
-                    {service.offerings.slice(0, 2).map((offering, oIdx) => (
-                      <div key={oIdx} className="spotlight-highlight-item">
-                        <Check size={15} className="highlight-check-icon" />
-                        <span>{offering.title}</span>
+                  <div className="spotlight-content">
+                    <div className="spotlight-header-row">
+                      <div className="spotlight-icon-circle">
+                        <ServiceIcon name={service.iconName} size={22} />
                       </div>
-                    ))}
-                  </div>
+                      <h3 className="spotlight-title">{service.title}</h3>
+                    </div>
+                    <p className="spotlight-desc">{service.shortDescription}</p>
+                    
+                    <div className="spotlight-highlights-list">
+                      {service.offerings.slice(0, 2).map((offering, oIdx) => (
+                        <div key={oIdx} className="spotlight-highlight-item">
+                          <Check size={15} className="highlight-check-icon" />
+                          <span>{offering.title}</span>
+                        </div>
+                      ))}
+                    </div>
 
-                  <div className="spotlight-footer">
-                    <Link to={`/services/${service.slug}`} className="btn-spotlight-link">
-                      <span>Explore Service Details</span>
-                      <ArrowRight size={16} />
-                    </Link>
+                    <div className="spotlight-footer">
+                      <Link to={`/services/${service.slug}`} className="btn-spotlight-link">
+                        <span>Explore Service Details</span>
+                        <ArrowRight size={16} />
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                </TiltCard>
               </div>
             ))}
           </div>
@@ -217,39 +220,43 @@ export default function Home() {
           {/* Interactive Services Grid */}
           <div className="services-catalog-grid">
             {filteredServices.map((service, idx) => (
-              <div key={service.id} className="service-catalog-card card reveal-on-scroll">
-                <div className="card-top-bar">
-                  <span className="service-cat-pill">{service.categoryName}</span>
-                  {service.isFeatured && <span className="featured-mini-chip">Featured</span>}
-                </div>
-
-                <div className="service-icon-banner">
-                  <div className="catalog-icon-box">
-                    <ServiceIcon name={service.iconName} size={24} />
+              <div key={service.id} className="reveal-on-scroll">
+                <TiltCard maxRotation={5} scale={1.02} className="service-catalog-card card">
+                  <div className="card-top-bar">
+                    <span className="service-cat-pill">{service.categoryName}</span>
+                    {service.isFeatured && <span className="featured-mini-chip">Featured</span>}
                   </div>
-                </div>
 
-                <h3 className="catalog-service-title">{service.title}</h3>
-                <p className="catalog-service-desc">{service.shortDescription}</p>
+                  <div className="service-icon-banner">
+                    <div className="catalog-icon-box">
+                      <ServiceIcon name={service.iconName} size={24} />
+                    </div>
+                  </div>
 
-                <div className="catalog-card-footer">
-                  <Link to={`/services/${service.slug}`} className="catalog-learn-more">
-                    <span>Learn More</span>
-                    <ChevronRight size={16} />
-                  </Link>
-                  <Link to="/book-an-appointment" className="catalog-book-mini">
-                    <span>Enquire</span>
-                  </Link>
-                </div>
+                  <h3 className="catalog-service-title">{service.title}</h3>
+                  <p className="catalog-service-desc">{service.shortDescription}</p>
+
+                  <div className="catalog-card-footer">
+                    <Link to={`/services/${service.slug}`} className="catalog-learn-more">
+                      <span>Learn More</span>
+                      <ChevronRight size={16} />
+                    </Link>
+                    <Link to="/book-an-appointment" className="catalog-book-mini">
+                      <span>Enquire</span>
+                    </Link>
+                  </div>
+                </TiltCard>
               </div>
             ))}
           </div>
 
           <div className="services-catalog-cta text-center">
-            <Link to="/services" className="btn btn-primary btn-lg">
-              <span>View All Services</span>
-              <ArrowRight size={18} />
-            </Link>
+            <MagneticButton maxDistance={4}>
+              <Link to="/services" className="btn btn-primary btn-lg">
+                <span>View All Services</span>
+                <ArrowRight size={18} />
+              </Link>
+            </MagneticButton>
           </div>
         </div>
       </section>
@@ -330,11 +337,15 @@ export default function Home() {
                 />
                 <div className="stats-overlay-grid">
                   <div className="stat-box">
-                    <span className="stat-val">2021</span>
+                    <span className="stat-val">
+                      <AnimatedCounter value="2021" />
+                    </span>
                     <span className="stat-lbl">ESTABLISHED CARE</span>
                   </div>
                   <div className="stat-box">
-                    <span className="stat-val">24/7</span>
+                    <span className="stat-val">
+                      <AnimatedCounter value="24/7" />
+                    </span>
                     <span className="stat-lbl">CLINICAL HELPDESK</span>
                   </div>
                 </div>
@@ -357,43 +368,49 @@ export default function Home() {
 
           <div className="who-are-we-leadership-grid">
             {/* Leadership Card 1: K Mahindra */}
-            <div className="leader-feature-card card reveal-on-scroll animate-fade-in-left">
-              <div className="leader-badge-pill">
-                <UserCheck size={16} />
-                <span>Operations Director</span>
-              </div>
-              <h3 className="leader-name">K Mahindra</h3>
-              <p className="leader-role-desc">
-                Leading healthcare operations, emergency dispatch logistics, and clinical quality assurance to ensure every family receives prompt, reliable doorstep medical support.
-              </p>
-              <Link to="/about-us/k-mahindra" className="leader-profile-link">
-                <span>View Full Profile</span>
-                <ArrowRight size={15} />
-              </Link>
+            <div className="reveal-on-scroll animate-fade-in-left">
+              <TiltCard maxRotation={4} scale={1.015} className="leader-feature-card card">
+                <div className="leader-badge-pill">
+                  <UserCheck size={16} />
+                  <span>Operations Director</span>
+                </div>
+                <h3 className="leader-name">K Mahindra</h3>
+                <p className="leader-role-desc">
+                  Leading healthcare operations, emergency dispatch logistics, and clinical quality assurance to ensure every family receives prompt, reliable doorstep medical support.
+                </p>
+                <Link to="/about-us/k-mahindra" className="leader-profile-link">
+                  <span>View Full Profile</span>
+                  <ArrowRight size={15} />
+                </Link>
+              </TiltCard>
             </div>
 
             {/* Leadership Card 2: K Nakshitthra */}
-            <div className="leader-feature-card card reveal-on-scroll animate-fade-in-right">
-              <div className="leader-badge-pill" style={{ color: 'var(--secondary-color)', backgroundColor: 'var(--secondary-light)' }}>
-                <Heart size={16} />
-                <span>Clinical Director</span>
-              </div>
-              <h3 className="leader-name">K Nakshitthra</h3>
-              <p className="leader-role-desc">
-                Overseeing nursing governance, clinical protocols, patient safety standards, and specialized geriatric care with deep empathy and personalized patient advocacy.
-              </p>
-              <Link to="/about-us/k-nakshitthra" className="leader-profile-link">
-                <span>View Full Profile</span>
-                <ArrowRight size={15} />
-              </Link>
+            <div className="reveal-on-scroll animate-fade-in-right">
+              <TiltCard maxRotation={4} scale={1.015} className="leader-feature-card card">
+                <div className="leader-badge-pill" style={{ color: 'var(--secondary-color)', backgroundColor: 'var(--secondary-light)' }}>
+                  <Heart size={16} />
+                  <span>Clinical Director</span>
+                </div>
+                <h3 className="leader-name">K Nakshitthra</h3>
+                <p className="leader-role-desc">
+                  Overseeing nursing governance, clinical protocols, patient safety standards, and specialized geriatric care with deep empathy and personalized patient advocacy.
+                </p>
+                <Link to="/about-us/k-nakshitthra" className="leader-profile-link">
+                  <span>View Full Profile</span>
+                  <ArrowRight size={15} />
+                </Link>
+              </TiltCard>
             </div>
           </div>
 
           <div className="who-are-we-actions text-center" style={{ marginTop: '35px' }}>
-            <Link to="/about-us" className="btn btn-primary btn-lg">
-              <span>Read Our Full Story</span>
-              <ArrowRight size={16} />
-            </Link>
+            <MagneticButton maxDistance={4}>
+              <Link to="/about-us" className="btn btn-primary btn-lg">
+                <span>Read Our Full Story</span>
+                <ArrowRight size={16} />
+              </Link>
+            </MagneticButton>
           </div>
         </div>
       </section>
@@ -413,14 +430,19 @@ export default function Home() {
               Our care coordinators are available 24/7 to assess your needs, verify prescriptions, and dispatch healthcare professionals directly to your home.
             </p>
             <div className="cta-banner-buttons">
-              <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">
-                <Calendar size={18} />
-                <span>Book an Appointment</span>
-              </Link>
-              <a href={siteData.contact.phoneHref} className="btn btn-outline-white btn-lg">
-                <PhoneCall size={18} />
-                <span>Call {siteData.contact.phone}</span>
-              </a>
+              <MagneticButton maxDistance={4}>
+                <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">
+                  <Calendar size={18} />
+                  <span>Book an Appointment</span>
+                </Link>
+              </MagneticButton>
+
+              <MagneticButton maxDistance={4}>
+                <a href={siteData.contact.phoneHref} className="btn btn-outline-white btn-lg">
+                  <PhoneCall size={18} />
+                  <span>Call {siteData.contact.phone}</span>
+                </a>
+              </MagneticButton>
             </div>
           </div>
         </div>
