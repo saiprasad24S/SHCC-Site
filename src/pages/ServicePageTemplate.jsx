@@ -5,6 +5,8 @@ import PageBanner from '../components/PageBanner/PageBanner';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 import AppointmentForm from '../components/AppointmentForm/AppointmentForm';
 import ServiceIcon from '../components/ServiceIcon/ServiceIcon';
+import TiltCard from '../components/InteractiveCard/TiltCard';
+import MagneticButton from '../components/MagneticButton/MagneticButton';
 import { siteData } from '../data/siteData';
 import './ServicePage.css';
 
@@ -34,24 +36,33 @@ export default function ServicePageTemplate({ service }) {
               <p className="lead-desc">{service.fullDescription}</p>
 
               <div className="service-quick-cta">
-                <a href="#book-form" className="btn btn-primary btn-lg">
-                  <Calendar size={18} />
-                  <span>Book an Appointment</span>
-                </a>
-                <a href={siteData.contact.phoneHref} className="btn btn-outline btn-lg">
-                  <PhoneCall size={18} />
-                  <span>Call {siteData.contact.phone}</span>
-                </a>
+                <MagneticButton maxDistance={4}>
+                  <a href="#book-form" className="btn btn-primary btn-lg">
+                    <Calendar size={18} />
+                    <span>Book an Appointment</span>
+                  </a>
+                </MagneticButton>
+
+                <MagneticButton maxDistance={4}>
+                  <a href={siteData.contact.phoneHref} className="btn btn-outline btn-lg">
+                    <PhoneCall size={18} />
+                    <span>Call {siteData.contact.phone}</span>
+                  </a>
+                </MagneticButton>
               </div>
             </div>
 
             <div className="service-intro-media">
               <div className="service-media-card card">
                 <img
-                  src={service.heroImage}
+                  src={service.heroImage || service.coverImage}
                   alt={service.title}
                   className="service-hero-img"
                 />
+                <div className="service-media-badge-tag">
+                  <ShieldCheck size={15} />
+                  <span>Certified Clinical Protocol</span>
+                </div>
               </div>
             </div>
           </div>
@@ -71,13 +82,13 @@ export default function ServicePageTemplate({ service }) {
 
             <div className="offerings-grid">
               {service.offerings.map((off, index) => (
-                <div key={index} className="offering-card card">
+                <TiltCard key={index} maxRotation={4} scale={1.015} className="offering-card card">
                   <div className="offering-icon-wrap">
                     <ServiceIcon name={service.iconName} size={24} />
                   </div>
                   <h3 className="offering-title">{off.title}</h3>
                   <p className="offering-desc">{off.desc}</p>
-                </div>
+                </TiltCard>
               ))}
             </div>
           </div>
@@ -97,12 +108,12 @@ export default function ServicePageTemplate({ service }) {
 
             <div className="who-is-it-for-grid">
               {service.whoIsItFor.map((item, idx) => (
-                <div key={idx} className="who-item-card card">
+                <TiltCard key={idx} maxRotation={3} scale={1.01} className="who-item-card card">
                   <div className="who-icon-pill">
                     <UserCheck size={22} />
                   </div>
                   <p className="who-item-text">{item}</p>
-                </div>
+                </TiltCard>
               ))}
             </div>
           </div>
@@ -122,11 +133,11 @@ export default function ServicePageTemplate({ service }) {
 
             <div className="service-steps-flow-grid">
               {service.howItWorks.map((step, idx) => (
-                <div key={idx} className="service-flow-step-card card">
+                <TiltCard key={idx} maxRotation={4} scale={1.02} className="service-flow-step-card card">
                   <span className="flow-step-num">{step.step}</span>
                   <h4 className="flow-step-title">{step.title}</h4>
                   <p className="flow-step-desc">{step.desc}</p>
-                </div>
+                </TiltCard>
               ))}
             </div>
           </div>
@@ -138,35 +149,38 @@ export default function ServicePageTemplate({ service }) {
         <section className="service-why-section section-padding">
           <div className="container">
             <div className="service-why-grid">
-              <div className="service-why-media">
-                <img
-                  src={service.coverImage || service.heroImage}
-                  alt={`Why Choose Skandan for ${service.title}`}
-                  className="service-feature-img card"
-                />
-              </div>
-
               <div className="service-why-content">
-                <span className="section-badge-subtitle">Quality Assurance</span>
-                <h2 className="section-main-title">
-                  {service.whyChooseTitle || `Why Choose Skandan's ${service.title}?`}
-                </h2>
-
-                <div className="service-benefits-list">
-                  {service.whyChoosePoints.map((point, idx) => (
-                    <div key={idx} className="benefit-list-item">
-                      <CheckCircle2 size={20} className="benefit-check" />
-                      <span>{point}</span>
+                <span className="section-badge-subtitle">Quality Standards</span>
+                <h2 className="section-main-title">{service.whyChooseTitle || `Why Choose Skandan for ${service.title}?`}</h2>
+                
+                <div className="service-why-points-list">
+                  {service.whyChoosePoints.map((pt, i) => (
+                    <div key={i} className="service-why-point-item">
+                      <div className="point-icon-box">
+                        <ShieldCheck size={20} />
+                      </div>
+                      <p className="point-text">{pt}</p>
                     </div>
                   ))}
                 </div>
+              </div>
 
-                <div className="why-call-box">
-                  <ShieldCheck size={26} color="#004E9E" />
-                  <div>
-                    <strong>100% Background Verified & Medically Certified</strong>
-                    <p>All healthcare personnel carry institutional ID and clinical credentials.</p>
+              <div className="service-why-box-card card">
+                <div className="why-box-header">
+                  <div className="why-box-icon">
+                    <HeartHandshake size={28} />
                   </div>
+                  <div>
+                    <h4 className="why-box-title">Doctor-Coordinated Care</h4>
+                    <span className="why-box-sub">Supervised by Medical Officers</span>
+                  </div>
+                </div>
+                <p className="why-box-desc">
+                  Every home treatment plan is synchronized with your treating physician. We provide daily vitals records, clinical notes, and emergency escalation support.
+                </p>
+                <div className="why-box-highlights">
+                  <div className="highlight-tag"><ShieldCheck size={14} /> 100% Verified Staff</div>
+                  <div className="highlight-tag"><FileText size={14} /> Daily Nursing Charts</div>
                 </div>
               </div>
             </div>
@@ -174,72 +188,20 @@ export default function ServicePageTemplate({ service }) {
         </section>
       )}
 
-      {/* 7. Bottom CTA Section */}
-      <section className="service-bottom-cta-section section-padding-sm bg-primary text-center">
-        <div className="container">
-          <div className="service-bottom-cta-box">
-            <h2 className="text-white cta-title-lg">
-              {service.ctaTitle || `Need Professional ${service.title}?`}
-            </h2>
-            <p className="text-white cta-desc-lead">
-              {service.ctaSubtitle || `Call us now at +91 96609 66369 to book a visit at your convenience.`}
-            </p>
-            <div className="service-cta-actions">
-              <a href={siteData.contact.phoneHref} className="btn btn-secondary btn-lg">
-                <PhoneCall size={18} />
-                <span>{service.ctaButtonText || `Call +91 96609 66369`}</span>
-              </a>
-              <a href="#book-form" className="btn btn-outline-white btn-lg">
-                <Calendar size={18} />
-                <span>Book an Appointment</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Book This Service Directly Form */}
+      {/* 7. Appointment Booking Section */}
       <section id="book-form" className="service-booking-section section-padding bg-light">
         <div className="container">
-          <div className="booking-split-wrap">
-            <div className="booking-info-pane">
-              <span className="section-badge-subtitle">Direct Scheduling</span>
-              <h2 className="section-main-title">Book {service.title} Today</h2>
-              <p>
-                Submit the appointment request below and our clinical care coordinator will call you within minutes to confirm the appointment, discuss medical requirements, and match the ideal clinician.
+          <div className="service-booking-wrapper">
+            <div className="booking-header text-center">
+              <span className="section-badge-subtitle">Schedule Care Visit</span>
+              <h2 className="section-main-title">{service.ctaTitle || `Book ${service.title}`}</h2>
+              <p className="booking-lead-p">
+                {service.ctaSubtitle || `Fill out the form below or call +91 96609 66369 for immediate care coordinator support.`}
               </p>
-
-              <div className="booking-perks">
-                <div className="perk-item">
-                  <div className="perk-dot"></div>
-                  <span>Instant phone confirmation</span>
-                </div>
-                <div className="perk-item">
-                  <div className="perk-dot"></div>
-                  <span>Flexible hourly, shift, or live-in options</span>
-                </div>
-                <div className="perk-item">
-                  <div className="perk-dot"></div>
-                  <span>Physician-supervised recovery tracking</span>
-                </div>
-              </div>
-
-              <div className="emergency-call-card card">
-                <h4>Need Immediate Assistance?</h4>
-                <p>Call our care coordinator directly:</p>
-                <a href={siteData.contact.phoneHref} className="emergency-call-btn">
-                  <PhoneCall size={18} />
-                  <span>{siteData.contact.phone}</span>
-                </a>
-              </div>
             </div>
 
-            <div className="booking-form-pane">
-              <div className="form-card-wrapper card">
-                <h3 className="form-card-title">Schedule Service</h3>
-                <p className="form-card-subtitle">Fill in your details for home care coordination.</p>
-                <AppointmentForm defaultService={service.title} />
-              </div>
+            <div className="service-booking-form-box card">
+              <AppointmentForm defaultService={service.title} />
             </div>
           </div>
         </div>
