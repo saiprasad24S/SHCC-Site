@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { ReactLenis, useLenis } from 'lenis/react';
+import 'lenis/dist/lenis.css';
 
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -37,26 +39,42 @@ import NotFound from './pages/NotFound';
 import './styles/global.css';
 import './styles/responsive.css';
 
-// Scroll to top helper on route navigation
+// Scroll to top helper on route navigation with Lenis synchronization
 function ScrollToTop() {
   const { pathname } = useLocation();
+  const lenis = useLenis();
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant'
-    });
-  }, [pathname]);
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant'
+      });
+    }
+  }, [pathname, lenis]);
 
   return null;
 }
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <div className="app-layout">
-        <ScrollToTop />
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.08,
+        duration: 1.2,
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 1.5,
+        infinite: false
+      }}
+    >
+      <ThemeProvider>
+        <div className="app-layout">
+          <ScrollToTop />
         
         {/* Top Contact Bar */}
         <TopBar />
@@ -148,5 +166,6 @@ export default function App() {
         <Footer />
       </div>
     </ThemeProvider>
+  </ReactLenis>
   );
 }
