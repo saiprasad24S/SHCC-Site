@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Mail, Phone, ChevronRight } from 'lucide-react';
+import { MapPin, Mail, Phone, ChevronRight, Clock, ShieldCheck } from 'lucide-react';
 import { siteData } from '../../data/siteData';
 import logoImg from '../../assets/images/Skanda-Horizontal-LOGO2.png';
 import './Footer.css';
@@ -13,16 +13,20 @@ export default function Footer() {
           {/* Column 1: Brand Info */}
           <div className="footer-col brand-col">
             <div className="footer-logo-wrap">
-              <img src={logoImg} alt="Skandan Home Carre" className="footer-logo" />
+              <img src={logoImg} alt="Skandan Home Carre Clinic" className="footer-logo" />
             </div>
             <p className="footer-about">
-              {siteData.name} is a specialized home health care centre, established in 2021, offering reliable, professional, and compassionate care directly at your doorstep.
+              {siteData.footer.description}
             </p>
+            <div className="footer-trust-badge">
+              <ShieldCheck size={18} className="trust-badge-icon" />
+              <span>Government Registered & Certified Clinical Staff</span>
+            </div>
           </div>
 
           {/* Column 2: Quick Links */}
           <div className="footer-col">
-            <h5 className="footer-title">Quick Links</h5>
+            <h5 className="footer-title">Company</h5>
             <ul className="footer-links">
               {siteData.quickLinks.map((item) => (
                 <li key={item.path}>
@@ -35,28 +39,72 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Services */}
+          {/* Column 3: Clinical Services */}
           <div className="footer-col">
-            <h5 className="footer-title">Services</h5>
+            <h5 className="footer-title">Our Services</h5>
             <ul className="footer-links">
-              {siteData.navLinks.find((l) => l.label === 'Services')?.dropdown.map((srv) => (
-                <li key={srv.path}>
-                  <Link to={srv.path} className="footer-link">
-                    <ChevronRight size={14} className="footer-chevron" />
-                    <span>{srv.label}</span>
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link to="/services/critical-nursing-care" className="footer-link">
+                  <ChevronRight size={14} className="footer-chevron" />
+                  <span>Critical Nursing & ICU Care</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/medication-administration" className="footer-link">
+                  <ChevronRight size={14} className="footer-chevron" />
+                  <span>Medication & Injections</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/doctor-consultation" className="footer-link">
+                  <ChevronRight size={14} className="footer-chevron" />
+                  <span>Doctor Consultation at Home</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/physiotherapy" className="footer-link">
+                  <ChevronRight size={14} className="footer-chevron" />
+                  <span>In-Home Physiotherapy</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/sample-collection" className="footer-link">
+                  <ChevronRight size={14} className="footer-chevron" />
+                  <span>Blood Tests & Diagnostics</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/ecg-xray" className="footer-link">
+                  <ChevronRight size={14} className="footer-chevron" />
+                  <span>ECG & X-Ray at Home</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/pharmacy-delivery" className="footer-link">
+                  <ChevronRight size={14} className="footer-chevron" />
+                  <span>Doorstep Pharmacy Delivery</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="footer-link footer-all-services-link">
+                  <ChevronRight size={14} className="footer-chevron" />
+                  <strong>View All 13 Services →</strong>
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Column 4: Get In Touch */}
           <div className="footer-col contact-col">
-            <h5 className="footer-title">Get in touch</h5>
+            <h5 className="footer-title">Get In Touch</h5>
             <ul className="footer-contact-list">
               <li className="footer-contact-item">
                 <MapPin size={20} className="footer-contact-icon" />
                 <span>{siteData.contact.address}</span>
+              </li>
+              <li className="footer-contact-item">
+                <Clock size={18} className="footer-contact-icon" />
+                <span>{siteData.contact.workingHours}</span>
               </li>
               <li className="footer-contact-item">
                 <Mail size={18} className="footer-contact-icon" />
@@ -66,7 +114,7 @@ export default function Footer() {
               </li>
               <li className="footer-contact-item">
                 <Phone size={18} className="footer-contact-icon" />
-                <a href={siteData.contact.phoneHref} className="footer-contact-link">
+                <a href={siteData.contact.phoneHref} className="footer-contact-link footer-phone-highlight">
                   {siteData.contact.phone}
                 </a>
               </li>

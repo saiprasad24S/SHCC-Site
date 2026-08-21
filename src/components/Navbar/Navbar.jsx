@@ -85,7 +85,7 @@ export default function Navbar() {
                     </NavLink>
 
                     {/* Dropdown Sub-menu */}
-                    <ul className={`nav-dropdown-menu ${isOpen ? 'visible' : ''}`}>
+                    <ul className={`nav-dropdown-menu ${link.label === 'Services' ? 'services-mega-dropdown' : ''} ${isOpen ? 'visible' : ''}`}>
                       {link.dropdown.map((subItem) => (
                         <li key={subItem.path} className="dropdown-menu-item">
                           <NavLink

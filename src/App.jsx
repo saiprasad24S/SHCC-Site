@@ -21,14 +21,7 @@ import History from './pages/History';
 import Capabilities from './pages/Capabilities';
 import ReportsPolicies from './pages/ReportsPolicies';
 import ServicesList from './pages/ServicesList';
-import NursingServices from './pages/NursingServices';
-import CareGivers from './pages/CareGivers';
-import PhysiotherapyServices from './pages/PhysiotherapyServices';
-import DiagnosticServices from './pages/DiagnosticServices';
-import PharmacyServices from './pages/PharmacyServices';
-import Vaccination from './pages/Vaccination';
-import DoctorOnCall from './pages/DoctorOnCall';
-import MedicalCampServices from './pages/MedicalCampServices';
+import ServiceDetail from './pages/ServiceDetail';
 import Events from './pages/Events';
 import Careers from './pages/Careers';
 import ContactUs from './pages/ContactUs';
@@ -76,96 +69,77 @@ export default function App() {
         <div className="app-layout">
           <ScrollToTop />
         
-        {/* Top Contact Bar */}
-        <TopBar />
+          {/* Top Contact Bar */}
+          <TopBar />
 
-        {/* Main Header / Navigation */}
-        <Navbar />
+          {/* Main Header / Navigation */}
+          <Navbar />
 
-        {/* Page Routing */}
-        <main id="main-content" className="site-main-content">
-          <Routes>
-            {/* Home */}
-            <Route path="/" element={<Home />} />
-            
-            {/* About Us & Who Are We */}
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/who-are-we" element={<AboutUs />} />
-            <Route path="/about-us/who-are-we" element={<AboutUs />} />
-            <Route path="/about-us/k-mahindra" element={<KMahindra />} />
-            <Route path="/about-us/k-nakshitthra" element={<KNakshitthra />} />
-            <Route path="/about-us/mission-and-values" element={<MissionValues />} />
-            <Route path="/about-us/our-mission-and-values" element={<MissionValues />} />
-            <Route path="/about-us/history" element={<History />} />
-            <Route path="/about-us/our-history" element={<History />} />
-            <Route path="/about-us/capabilities" element={<Capabilities />} />
-            <Route path="/about-us/reports-and-policies" element={<ReportsPolicies />} />
-            
-            {/* Services Overview */}
-            <Route path="/services" element={<ServicesList />} />
-            
-            {/* 8 Individual Services with Canonical & Aliased Paths */}
-            <Route path="/services/nursing-services" element={<NursingServices />} />
-            <Route path="/nursing-services" element={<NursingServices />} />
-            <Route path="/nursing-services/" element={<NursingServices />} />
+          {/* Page Routing */}
+          <main id="main-content" className="site-main-content">
+            <Routes>
+              {/* Home */}
+              <Route path="/" element={<Home />} />
+              
+              {/* About Us & Who Are We */}
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/who-are-we" element={<AboutUs />} />
+              <Route path="/about-us/who-are-we" element={<AboutUs />} />
+              <Route path="/about-us/k-mahindra" element={<KMahindra />} />
+              <Route path="/about-us/k-nakshitthra" element={<KNakshitthra />} />
+              <Route path="/about-us/mission-and-values" element={<MissionValues />} />
+              <Route path="/about-us/our-mission-and-values" element={<MissionValues />} />
+              <Route path="/about-us/history" element={<History />} />
+              <Route path="/about-us/our-history" element={<History />} />
+              <Route path="/about-us/capabilities" element={<Capabilities />} />
+              <Route path="/about-us/reports-and-policies" element={<ReportsPolicies />} />
+              
+              {/* Services Overview */}
+              <Route path="/services" element={<ServicesList />} />
+              
+              {/* Dynamic Service Detail Route (Matches all 13 services) */}
+              <Route path="/services/:slug" element={<ServiceDetail />} />
 
-            <Route path="/services/care-givers" element={<CareGivers />} />
-            <Route path="/care-givers" element={<CareGivers />} />
-            <Route path="/care-givers/" element={<CareGivers />} />
+              {/* Legacy Root Paths Aliased to ServiceDetail */}
+              <Route path="/nursing-services" element={<ServiceDetail />} />
+              <Route path="/care-givers" element={<ServiceDetail />} />
+              <Route path="/physiotherapy-services" element={<ServiceDetail />} />
+              <Route path="/diagnostic-services" element={<ServiceDetail />} />
+              <Route path="/pharmacy-services" element={<ServiceDetail />} />
+              <Route path="/pharmacy-services-medical-surgical" element={<ServiceDetail />} />
+              <Route path="/immunization-vaccination-services" element={<ServiceDetail />} />
+              <Route path="/doctor-on-call-services" element={<ServiceDetail />} />
+              <Route path="/medical-camp-services" element={<ServiceDetail />} />
+              <Route path="/critical-nursing-care" element={<ServiceDetail />} />
+              <Route path="/doctor-consultation" element={<ServiceDetail />} />
+              <Route path="/physiotherapy" element={<ServiceDetail />} />
+              <Route path="/vaccination" element={<ServiceDetail />} />
 
-            <Route path="/services/physiotherapy-services" element={<PhysiotherapyServices />} />
-            <Route path="/physiotherapy-services" element={<PhysiotherapyServices />} />
-            <Route path="/physiotherapy-services/" element={<PhysiotherapyServices />} />
+              {/* Events */}
+              <Route path="/events" element={<Events />} />
 
-            <Route path="/services/diagnostic-services" element={<DiagnosticServices />} />
-            <Route path="/diagnostic-services" element={<DiagnosticServices />} />
-            <Route path="/diagnostic-services/" element={<DiagnosticServices />} />
+              {/* Careers */}
+              <Route path="/careers" element={<Careers />} />
 
-            <Route path="/services/pharmacy-services" element={<PharmacyServices />} />
-            <Route path="/pharmacy-services-medical-surgical" element={<PharmacyServices />} />
-            <Route path="/pharmacy-services-medical-surgical/" element={<PharmacyServices />} />
+              {/* Contact Us */}
+              <Route path="/contact-us" element={<ContactUs />} />
 
-            <Route path="/services/immunization-vaccination" element={<Vaccination />} />
-            <Route path="/immunization-vaccination-services" element={<Vaccination />} />
-            <Route path="/immunization-vaccination-services/" element={<Vaccination />} />
+              {/* Book Appointment */}
+              <Route path="/book-an-appointment" element={<BookAppointment />} />
+              <Route path="/book-appointment" element={<BookAppointment />} />
 
-            <Route path="/services/doctor-on-call" element={<DoctorOnCall />} />
-            <Route path="/doctor-on-call-services" element={<DoctorOnCall />} />
-            <Route path="/doctor-on-call-services/" element={<DoctorOnCall />} />
+              {/* 404 Catch-All */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
 
-            <Route path="/services/medical-camp-services" element={<MedicalCampServices />} />
-            <Route path="/medical-camp-services" element={<MedicalCampServices />} />
-            <Route path="/medical-camp-services/" element={<MedicalCampServices />} />
+          {/* Floating WhatsApp Button Only */}
+          <FloatingActions />
 
-            {/* Events */}
-            <Route path="/events" element={<Events />} />
-            <Route path="/events/" element={<Events />} />
-
-            {/* Careers */}
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/careers/" element={<Careers />} />
-
-            {/* Contact Us */}
-            <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/contact-us/" element={<ContactUs />} />
-
-            {/* Book Appointment */}
-            <Route path="/book-an-appointment" element={<BookAppointment />} />
-            <Route path="/book-an-appointment/" element={<BookAppointment />} />
-            <Route path="/book-appointment" element={<BookAppointment />} />
-
-            {/* 404 Catch-All */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-
-        {/* Floating WhatsApp Button Only */}
-        <FloatingActions />
-
-        {/* Footer */}
-        <Footer />
-      </div>
-    </ThemeProvider>
-  </ReactLenis>
+          {/* Footer */}
+          <Footer />
+        </div>
+      </ThemeProvider>
+    </ReactLenis>
   );
 }

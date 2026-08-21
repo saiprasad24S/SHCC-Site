@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ShieldCheck,
@@ -14,35 +14,38 @@ import {
   Activity,
   ChevronRight,
   Stethoscope,
-  HeartPulse
+  HeartPulse,
+  Syringe,
+  Microscope,
+  Scan,
+  Pill,
+  Baby,
+  GraduationCap,
+  Building2,
+  Moon,
+  Package,
+  Check,
+  UserCheck,
+  Heart
 } from 'lucide-react';
 import Hero from '../components/Hero/Hero';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
+import HowItWorks from '../components/HowItWorks/HowItWorks';
 import TestimonialCarousel from '../components/Testimonial/TestimonialCarousel';
-import { servicesData } from '../data/servicesData';
+import ServiceIcon from '../components/ServiceIcon/ServiceIcon';
+import { servicesData, serviceCategories, getFeaturedServices } from '../data/servicesData';
 import { siteData } from '../data/siteData';
-import { statisticsData } from '../data/testimonialsData';
 
 // Image imports
-import aboutImg1 from '../assets/images/skanda-4.jpg';
-import aboutImg2 from '../assets/images/skanda-5.jpg';
-import nursingImg from '../assets/images/nursing-8.jpg';
-import caregiverImg from '../assets/images/skanda-6.jpg';
-import diagnosticImg from '../assets/images/diagnostic-service-1.jpg';
-import physioImg from '../assets/images/2-1.jpg';
-import featuredCard1 from '../assets/images/health-visitor-and-senior-man-during-home-visit-.jpg';
-import featuredCard2 from '../assets/images/couple-of-two-old-and-mature-people-at-home-using-phone-together-in-sofa-senior-use-smartphone.jpg';
-import featuredCard3 from '../assets/images/skanda-8.jpg';
+import aboutImg1 from '../assets/images/skandan-aboutus-2.jpg';
+import aboutImg2 from '../assets/images/skanda-4.jpg';
 import whyChooseImg from '../assets/images/senior-woman-talking-to-caring-nurse-at-waiting-room.jpg';
-
-// Icons
-import vitalSignsIcon from '../assets/images/vital-signs.png';
-import doctorConsultIcon from '../assets/images/doctor-consultation.png';
-import elderlyIcon from '../assets/images/elderly-1.png';
 
 import './Home.css';
 
 export default function Home() {
+  const [activeCategory, setActiveCategory] = useState('all');
+
   // Reliable single-trigger IntersectionObserver for smooth scroll entrance
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -71,330 +74,200 @@ export default function Home() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [activeCategory]);
+
+  const featuredServices = getFeaturedServices();
+
+  const filteredServices = activeCategory === 'all'
+    ? servicesData
+    : servicesData.filter(s => s.categoryKey === activeCategory);
 
   return (
     <div className="home-page">
       {/* 1. Hero Section */}
       <Hero />
 
-      {/* 2. Top Highlights 3-Column Boxes */}
-      <section className="highlights-section">
+      {/* 2. Quick Value Proposition Trust Bar */}
+      <section className="quick-trust-bar">
         <div className="container">
-          <div className="highlights-grid">
-            {/* Box 1 */}
-            <div className="highlight-box-card card reveal-on-scroll animate-fade-in-up">
-              <div className="highlight-box-header">
-                <div className="highlight-icon-box">
-                  <img src={vitalSignsIcon} alt="Our Services" className="hl-icon-img" />
-                </div>
-                <span className="highlight-box-badge">Our Services</span>
+          <div className="trust-metrics-grid">
+            <div className="trust-metric-item">
+              <div className="metric-icon-box">
+                <HeartPulse size={24} />
               </div>
-              <h3 className="highlight-box-title">Skilled Care, Right at Your Home</h3>
-              <p className="highlight-box-desc">
-                From wound care to elderly support, our certified nurses deliver expert medical attention with compassion and precision—where you're most comfortable.
-              </p>
-              <Link to="/services/nursing-services" className="highlight-box-link">
-                <span>Explore Nursing Services</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-
-            {/* Box 2 */}
-            <div className="highlight-box-card card reveal-on-scroll animate-fade-in-up delay-1">
-              <div className="highlight-box-header">
-                <div className="highlight-icon-box">
-                  <img src={doctorConsultIcon} alt="Clinical Advice" className="hl-icon-img" />
-                </div>
-                <span className="highlight-box-badge">Clinical Advice</span>
-              </div>
-              <h3 className="highlight-box-title">Reliable Guidance from Medical Experts</h3>
-              <p className="highlight-box-desc">
-                Get trusted clinical recommendations and care plans tailored to your condition. We ensure accuracy, clarity, and peace of mind in every step of your healing.
-              </p>
-              <Link to="/services/doctor-on-call" className="highlight-box-link">
-                <span>Consult Our Doctors</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-
-            {/* Box 3 */}
-            <div className="highlight-box-card card reveal-on-scroll animate-fade-in-up delay-2">
-              <div className="highlight-box-header">
-                <div className="highlight-icon-box">
-                  <img src={elderlyIcon} alt="Our Expertise" className="hl-icon-img" />
-                </div>
-                <span className="highlight-box-badge">Our Expertise</span>
-              </div>
-              <h3 className="highlight-box-title">Leaders in Senior & Home Health Care</h3>
-              <p className="highlight-box-desc">
-                We specialize in senior care services that promote dignity, independence, and a higher quality of life—all from the comfort of home.
-              </p>
-              <Link to="/services/care-givers" className="highlight-box-link">
-                <span>View Senior Care</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. About Section: "Expert Home Health Care, Centered Around You" */}
-      <section className="about-home-section section-padding">
-        <div className="container">
-          <div className="about-home-grid">
-            {/* Left Image Collage */}
-            <div className="about-home-images reveal-on-scroll animate-fade-in-left">
-              <div className="image-stack-wrap">
-                <img src={aboutImg1} alt="Skandan Doctor with Senior Patient" className="about-img-main" />
-                <img src={aboutImg2} alt="Home Nurse Caring" className="about-img-secondary" />
-                <div className="experience-badge">
-                  <span className="exp-number">2021</span>
-                  <span className="exp-text">Established Care</span>
-                </div>
+              <div className="metric-text-box">
+                <h4>ICU-Trained Nurses</h4>
+                <p>12/24-Hr Bedside Critical Care</p>
               </div>
             </div>
 
-            {/* Right Text Content */}
-            <div className="about-home-content reveal-on-scroll animate-fade-in-right">
-              <span className="section-badge-subtitle">About Skandan</span>
-              <h2 className="section-main-title">
-                Expert Home Health Care, Centered Around You
-              </h2>
-              <p className="about-home-text">
-                <strong>{siteData.name}</strong> is a specialized home health care offering reliable, professional, and compassionate care directly at your doorstep. Established in 2021, we provide skilled nursing and diagnostic services to pharmacy support and immunizations, offering comprehensive medical assistance designed for comfort, convenience, and complete peace of mind.
-              </p>
-              <p className="about-home-text">
-                We proudly serve families across all over India, focusing on both short-term recovery and long-term senior care needs with certified clinicians.
-              </p>
-
-              <div className="about-features-list">
-                <div className="about-feature-item">
-                  <CheckCircle size={18} className="feat-check-icon" />
-                  <span>Hospital-grade medical protocols in the comfort of home</span>
-                </div>
-                <div className="about-feature-item">
-                  <CheckCircle size={18} className="feat-check-icon" />
-                  <span>Personalized physician-supervised recovery plans</span>
-                </div>
-                <div className="about-feature-item">
-                  <CheckCircle size={18} className="feat-check-icon" />
-                  <span>Transparent communication and regular health updates</span>
-                </div>
+            <div className="trust-metric-item">
+              <div className="metric-icon-box">
+                <Stethoscope size={24} />
               </div>
+              <div className="metric-text-box">
+                <h4>Doctors On Call</h4>
+                <p>Doorstep Clinical Consultations</p>
+              </div>
+            </div>
 
-              <div className="about-cta-wrap">
-                <Link to="/about-us" className="btn btn-primary btn-lg">
-                  Know More
-                </Link>
-                <Link to="/contact-us" className="btn btn-outline btn-lg">
-                  Contact us
-                </Link>
+            <div className="trust-metric-item">
+              <div className="metric-icon-box">
+                <ShieldCheck size={24} />
+              </div>
+              <div className="metric-text-box">
+                <h4>100% Verified Staff</h4>
+                <p>Certified, Background-Checked</p>
+              </div>
+            </div>
+
+            <div className="trust-metric-item">
+              <div className="metric-icon-box">
+                <Microscope size={24} />
+              </div>
+              <div className="metric-text-box">
+                <h4>Doorstep Diagnostics</h4>
+                <p>ECG, X-Ray & NABL Blood Tests</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Immediate Medical Assistance CTA Banner */}
-      <section className="cta-banner-section bg-primary text-center">
-        <div className="container">
-          <div className="cta-banner-content reveal-on-scroll animate-fade-in-up">
-            <span className="cta-mini-tag">Need Immediate Medical Assistance at Home?</span>
-            <h2 className="cta-banner-title">
-              Book a skilled nurse or medical service now with just a call.
-            </h2>
-            <p className="cta-banner-desc">
-              Our 24/7 care coordinators are ready to match your patient with certified nurses, physiotherapists, and medical equipment.
-            </p>
-            <div className="cta-banner-buttons">
-              <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">
-                <Calendar size={18} />
-                Book an Appointment
-              </Link>
-              <a href={siteData.contact.phoneHref} className="btn btn-outline-white btn-lg">
-                <PhoneCall size={18} />
-                Call {siteData.contact.phone}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Home Health Services: 4 Card Grid */}
-      <section className="home-services-section section-padding">
+      {/* 3. Featured Flagship Services Spotlight */}
+      <section className="featured-services-section section-padding">
         <div className="container">
           <SectionHeading
-            subtitle="Home Health Services"
-            title="Home Health Services That Care Like Family"
-            description="At Skandan Home Carre Cclinic LLP, we bring hospital-quality care to the comfort of your home. Our team of trained professionals offers a wide range of services—from nursing care and diagnostic testing to pharmacy support and vaccinations—ensuring complete health and wellness for your loved ones."
+            badge="Flagship Healthcare"
+            title="Featured Clinical Services"
+            description="Our primary healthcare divisions delivering hospital-standard treatment, physician reviews, and rehabilitation recovery at home."
+            alignment="center"
           />
 
-          <div className="services-card-grid">
-            {/* Card 1: Nursing */}
-            <div className="service-feature-card card reveal-on-scroll animate-fade-in-up">
-              <div className="service-card-img-wrap">
-                <img src={nursingImg} alt="Nursing Services" className="service-card-img" />
-                <span className="service-card-tag">Nursing</span>
-              </div>
-              <div className="service-card-body">
-                <h3 className="service-card-title">Nursing Services</h3>
-                <p className="service-card-text">
-                  Trained and certified nursing professionals to manage wound care, IV administration, injections, catheterization, elderly care, and more—right in your home.
-                </p>
-                <Link to="/services/nursing-services" className="service-card-action">
-                  <span>Discover more</span>
-                  <ChevronRight size={16} />
-                </Link>
-              </div>
-            </div>
+          <div className="featured-spotlight-grid">
+            {featuredServices.map((service, idx) => (
+              <div key={service.id} className={`spotlight-card card reveal-on-scroll delay-${idx + 1}`}>
+                <div className="spotlight-img-wrap">
+                  <img src={service.heroImage} alt={service.title} className="spotlight-img" />
+                  <div className="spotlight-category-tag">{service.categoryName}</div>
+                  <div className="spotlight-badge-chip">{service.badge}</div>
+                </div>
+                <div className="spotlight-content">
+                  <div className="spotlight-header-row">
+                    <div className="spotlight-icon-circle">
+                      <ServiceIcon name={service.iconName} size={22} />
+                    </div>
+                    <h3 className="spotlight-title">{service.title}</h3>
+                  </div>
+                  <p className="spotlight-desc">{service.shortDescription}</p>
+                  
+                  <div className="spotlight-highlights-list">
+                    {service.offerings.slice(0, 2).map((offering, oIdx) => (
+                      <div key={oIdx} className="spotlight-highlight-item">
+                        <Check size={15} className="highlight-check-icon" />
+                        <span>{offering.title}</span>
+                      </div>
+                    ))}
+                  </div>
 
-            {/* Card 2: Caregivers */}
-            <div className="service-feature-card card reveal-on-scroll animate-fade-in-up delay-1">
-              <div className="service-card-img-wrap">
-                <img src={caregiverImg} alt="Care Givers" className="service-card-img" />
-                <span className="service-card-tag">Caregivers</span>
+                  <div className="spotlight-footer">
+                    <Link to={`/services/${service.slug}`} className="btn-spotlight-link">
+                      <span>Explore Service Details</span>
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="service-card-body">
-                <h3 className="service-card-title">Care Givers</h3>
-                <p className="service-card-text">
-                  Compassionate caregivers providing round-the-clock support for newborns, elderly individuals, post-surgery patients, and palliative care needs.
-                </p>
-                <Link to="/services/care-givers" className="service-card-action">
-                  <span>Discover more</span>
-                  <ChevronRight size={16} />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 3: Physiotherapy */}
-            <div className="service-feature-card card reveal-on-scroll animate-fade-in-up delay-2">
-              <div className="service-card-img-wrap">
-                <img src={physioImg} alt="Physiotherapy Services" className="service-card-img" />
-                <span className="service-card-tag">Rehabilitation</span>
-              </div>
-              <div className="service-card-body">
-                <h3 className="service-card-title">Physiotherapy Services</h3>
-                <p className="service-card-text">
-                  Certified physiotherapists delivering personalized rehabilitation, pain management, and mobility restoration sessions right at your doorstep.
-                </p>
-                <Link to="/services/physiotherapy-services" className="service-card-action">
-                  <span>Discover more</span>
-                  <ChevronRight size={16} />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 4: Diagnostics */}
-            <div className="service-feature-card card reveal-on-scroll animate-fade-in-up delay-3">
-              <div className="service-card-img-wrap">
-                <img src={diagnosticImg} alt="Diagnostic Services" className="service-card-img" />
-                <span className="service-card-tag">Diagnostics</span>
-              </div>
-              <div className="service-card-body">
-                <h3 className="service-card-title">Diagnostic Services</h3>
-                <p className="service-card-text">
-                  From blood tests to health screenings, our diagnostic experts ensure accurate and timely results without the need to step out.
-                </p>
-                <Link to="/services/diagnostic-services" className="service-card-action">
-                  <span>Discover more</span>
-                  <ChevronRight size={16} />
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 6. Featured Services Bento / Cover Cards with Zoom Hover */}
-      <section className="featured-services-section section-padding-sm bg-light">
+      {/* 4. Complete Services Catalog with Category Navigation Tabs */}
+      <section className="services-catalog-section section-padding bg-light" id="services-catalog">
         <div className="container">
           <SectionHeading
-            subtitle="Specialized Solutions"
-            title="Explore Our Featured Services"
-            description="Dedicated healthcare and personal assistance programs customized for each family's unique recovery requirements."
+            badge="Comprehensive Care"
+            title="Complete Healthcare, Delivered With Care"
+            description="Explore our specialized clinical care, bedside nursing, physical therapy, at-home diagnostics, and genuine pharmacy supplies."
+            alignment="center"
           />
 
-          <div className="featured-bento-grid">
-            {/* Bento Card 1 */}
-            <div className="bento-cover-card reveal-on-scroll animate-fade-in-up" style={{ backgroundImage: `url(${featuredCard1})` }}>
-              <div className="bento-card-overlay"></div>
-              <div className="bento-card-content">
-                <span className="bento-badge">Assistance</span>
-                <h3 className="bento-title">Home Care Assistance</h3>
-                <p className="bento-desc">
-                  Comprehensive daily living assistance, vital sign charting, mobility management, and nutrition support.
-                </p>
-                <Link to="/services/care-givers" className="bento-link">
-                  Learn More <ArrowRight size={14} />
-                </Link>
-              </div>
+          {/* Modern Category Tab Bar */}
+          <div className="services-category-tabs-wrap">
+            <div className="services-category-tabs" role="tablist">
+              {serviceCategories.map((cat) => {
+                const isActive = activeCategory === cat.key;
+                return (
+                  <button
+                    key={cat.key}
+                    className={`category-tab-btn ${isActive ? 'active' : ''}`}
+                    onClick={() => setActiveCategory(cat.key)}
+                    role="tab"
+                    aria-selected={isActive}
+                  >
+                    <ServiceIcon name={cat.icon} size={17} className="tab-icon" />
+                    <span>{cat.name}</span>
+                  </button>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Bento Card 2 */}
-            <div className="bento-cover-card reveal-on-scroll animate-fade-in-up delay-1" style={{ backgroundImage: `url(${featuredCard2})` }}>
-              <div className="bento-card-overlay"></div>
-              <div className="bento-card-content">
-                <span className="bento-badge">Companion</span>
-                <h3 className="bento-title">Companion Care</h3>
-                <p className="bento-desc">
-                  Preventing loneliness among seniors through meaningful interactions, recreational support, and daily walks.
-                </p>
-                <Link to="/services/care-givers" className="bento-link">
-                  Learn More <ArrowRight size={14} />
-                </Link>
-              </div>
-            </div>
+          {/* Interactive Services Grid */}
+          <div className="services-catalog-grid">
+            {filteredServices.map((service, idx) => (
+              <div key={service.id} className="service-catalog-card card reveal-on-scroll">
+                <div className="card-top-bar">
+                  <span className="service-cat-pill">{service.categoryName}</span>
+                  {service.isFeatured && <span className="featured-mini-chip">Featured</span>}
+                </div>
 
-            {/* Bento Card 3 */}
-            <div className="bento-cover-card reveal-on-scroll animate-fade-in-up delay-2" style={{ backgroundImage: `url(${featuredCard3})` }}>
-              <div className="bento-card-overlay"></div>
-              <div className="bento-card-content">
-                <span className="bento-badge">Relief</span>
-                <h3 className="bento-title">Respite Care</h3>
-                <p className="bento-desc">
-                  Temporary relief for primary family caregivers ensuring seamless, professional continuation of patient care.
-                </p>
-                <Link to="/services/nursing-services" className="bento-link">
-                  Learn More <ArrowRight size={14} />
-                </Link>
+                <div className="service-icon-banner">
+                  <div className="catalog-icon-box">
+                    <ServiceIcon name={service.iconName} size={24} />
+                  </div>
+                </div>
+
+                <h3 className="catalog-service-title">{service.title}</h3>
+                <p className="catalog-service-desc">{service.shortDescription}</p>
+
+                <div className="catalog-card-footer">
+                  <Link to={`/services/${service.slug}`} className="catalog-learn-more">
+                    <span>Learn More</span>
+                    <ChevronRight size={16} />
+                  </Link>
+                  <Link to="/book-an-appointment" className="catalog-book-mini">
+                    <span>Enquire</span>
+                  </Link>
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="services-catalog-cta text-center">
+            <Link to="/services" className="btn btn-primary btn-lg">
+              <span>View All Services</span>
+              <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* 7. Immediate Care Notice Banner */}
-      <section className="notice-banner-section section-padding-sm">
-        <div className="container">
-          <div className="notice-banner-card card reveal-on-scroll animate-fade-in-up">
-            <div className="notice-banner-content">
-              <span className="section-badge-subtitle">Always Accessible</span>
-              <h2 className="notice-banner-title">Need Care at Home? We’re Just a Call Away.</h2>
-              <p className="notice-banner-text">
-                Whether it’s post-hospital recovery, elderly care, or regular health checkups—Skandan’s compassionate medical team is ready to help. Get professional healthcare without stepping outside your home.
-              </p>
-            </div>
-            <div className="notice-banner-action">
-              <Link to="/contact-us" className="btn btn-secondary btn-lg">
-                <PhoneCall size={16} />
-                Contact us
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 5. Modern How It Works (4-Step Workflow) */}
+      <HowItWorks />
 
-      {/* 8. Why They Choose Us & Statistics */}
-      <section className="why-choose-section section-padding bg-light">
+      {/* 6. Why Choose Us / Trust & Safety Pillars */}
+      <section className="why-choose-section section-padding">
         <div className="container">
           <div className="why-choose-grid">
-            {/* Left Content */}
             <div className="why-choose-content reveal-on-scroll animate-fade-in-left">
-              <span className="section-badge-subtitle">Why They Choose Us</span>
-              <h2 className="section-main-title">We spread care to provide quality life.</h2>
+              <span className="section-badge-subtitle">Why Choose Skandan</span>
+              <h2 className="section-main-title">
+                Setting the Highest Standards in Home Health Care
+              </h2>
               <p className="why-choose-lead">
-                At <strong>Skandan Home Carre Cclinic</strong>, we go beyond basic support—we deliver compassionate, clinical, and professional care right to your doorstep. Our dedicated team and patient-first approach make us the trusted choice for thousands of families.
+                At Skandan Home Carre Clinic, we combine clinical rigor with genuine compassion. Every nurse, therapist, and physician is held to strict hospital-grade standards.
               </p>
 
               <div className="why-features-grid">
@@ -403,9 +276,9 @@ export default function Home() {
                     <ShieldCheck size={22} />
                   </div>
                   <div>
-                    <h4 className="why-item-title">Trusted by Thousands</h4>
+                    <h3 className="why-item-title">Certified Clinicians</h3>
                     <p className="why-item-desc">
-                      Families across all over India trust us for consistent, expert home care that truly makes a difference.
+                      100% verified B.Sc/GNM nurses, licensed physiotherapists, and registered MBBS physicians.
                     </p>
                   </div>
                 </div>
@@ -415,21 +288,9 @@ export default function Home() {
                     <Award size={22} />
                   </div>
                   <div>
-                    <h4 className="why-item-title">Professional Caregivers</h4>
+                    <h3 className="why-item-title">Hospital Infection Protocols</h3>
                     <p className="why-item-desc">
-                      Our team includes trained nurses, physiotherapists, and health aides who are selected for their compassion and medical expertise.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="why-item">
-                  <div className="why-icon-pill">
-                    <Users size={22} />
-                  </div>
-                  <div>
-                    <h4 className="why-item-title">2500+ Happy Seniors</h4>
-                    <p className="why-item-desc">
-                      We’ve proudly supported thousands of seniors with comfort, dignity, and a sense of independence in their own homes.
+                      Aseptic techniques, single-use sterile consumables, and strict hand-hygiene guidelines.
                     </p>
                   </div>
                 </div>
@@ -439,26 +300,43 @@ export default function Home() {
                     <Clock size={22} />
                   </div>
                   <div>
-                    <h4 className="why-item-title">Easy and Safe Connectivity</h4>
+                    <h3 className="why-item-title">24x7 Care Continuity</h3>
                     <p className="why-item-desc">
-                      Reach us via phone, WhatsApp, or our website—our support is seamless, secure, and always accessible when you need it.
+                      Round-the-clock emergency support, supervisor check-ins, and doctor coordination.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="why-item">
+                  <div className="why-icon-pill">
+                    <HeartHandshake size={22} />
+                  </div>
+                  <div>
+                    <h3 className="why-item-title">Family-Centered Care</h3>
+                    <p className="why-item-desc">
+                      Transparent daily nursing charting and empathetic communication for total peace of mind.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Image with Stats Grid */}
             <div className="why-choose-media reveal-on-scroll animate-fade-in-right">
-              <div className="why-media-card card">
-                <img src={whyChooseImg} alt="Caring nurse with senior patient" className="why-media-img" />
+              <div className="why-media-card">
+                <img
+                  src={whyChooseImg}
+                  alt="Skandan Nurse Caring for Patient"
+                  className="why-media-img"
+                />
                 <div className="stats-overlay-grid">
-                  {statisticsData.map((st, i) => (
-                    <div key={i} className="stat-box">
-                      <div className="stat-val">{st.value}</div>
-                      <div className="stat-lbl">{st.label}</div>
-                    </div>
-                  ))}
+                  <div className="stat-box">
+                    <span className="stat-val">2021</span>
+                    <span className="stat-lbl">ESTABLISHED CARE</span>
+                  </div>
+                  <div className="stat-box">
+                    <span className="stat-val">24/7</span>
+                    <span className="stat-lbl">CLINICAL HELPDESK</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -466,59 +344,83 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. Testimonials Carousel */}
+      {/* 7. Who Are We / Leadership & Company Overview Section */}
+      <section className="about-home-section section-padding bg-light" id="who-are-we">
+        <div className="container">
+          <div className="who-are-we-header text-center">
+            <span className="section-badge-subtitle">Who Are We</span>
+            <h2 className="section-main-title">Compassionate Care Backed by Clinical Leadership</h2>
+            <p className="section-main-desc" style={{ margin: '0 auto 45px' }}>
+              Skandan Home Carre Clinic is an established healthcare organization founded in 2021, dedicated to delivering trusted hospital-grade clinical care at patient residences across Hyderabad.
+            </p>
+          </div>
+
+          <div className="who-are-we-leadership-grid">
+            {/* Leadership Card 1: K Mahindra */}
+            <div className="leader-feature-card card reveal-on-scroll animate-fade-in-left">
+              <div className="leader-badge-pill">
+                <UserCheck size={16} />
+                <span>Operations Director</span>
+              </div>
+              <h3 className="leader-name">K Mahindra</h3>
+              <p className="leader-role-desc">
+                Leading healthcare operations, emergency dispatch logistics, and clinical quality assurance to ensure every family receives prompt, reliable doorstep medical support.
+              </p>
+              <Link to="/about-us/k-mahindra" className="leader-profile-link">
+                <span>View Full Profile</span>
+                <ArrowRight size={15} />
+              </Link>
+            </div>
+
+            {/* Leadership Card 2: K Nakshitthra */}
+            <div className="leader-feature-card card reveal-on-scroll animate-fade-in-right">
+              <div className="leader-badge-pill" style={{ color: 'var(--secondary-color)', backgroundColor: 'var(--secondary-light)' }}>
+                <Heart size={16} />
+                <span>Clinical Director</span>
+              </div>
+              <h3 className="leader-name">K Nakshitthra</h3>
+              <p className="leader-role-desc">
+                Overseeing nursing governance, clinical protocols, patient safety standards, and specialized geriatric care with deep empathy and personalized patient advocacy.
+              </p>
+              <Link to="/about-us/k-nakshitthra" className="leader-profile-link">
+                <span>View Full Profile</span>
+                <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
+
+          <div className="who-are-we-actions text-center" style={{ marginTop: '35px' }}>
+            <Link to="/about-us" className="btn btn-primary btn-lg">
+              <span>Read Our Full Story</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Patient Testimonials */}
       <TestimonialCarousel />
 
-      {/* 10. Need More Help? Assistance Cards */}
-      <section className="assistance-section section-padding bg-light">
+      {/* 9. Immediate Medical Assistance CTA Banner */}
+      <section className="cta-banner-section bg-primary text-center">
         <div className="container">
-          <SectionHeading
-            subtitle="Immediate Assistance"
-            title="Need More Help?"
-            description="Whether it’s medical assistance, service queries, or general help — we’re just a click away. Explore the options below to get the care and answers you need."
-          />
-
-          <div className="assistance-grid">
-            {/* Card 1 */}
-            <div className="assistance-card card reveal-on-scroll animate-fade-in-up">
-              <div className="assistance-icon-wrap">
-                <Activity size={28} />
-              </div>
-              <h3 className="assistance-title">Request Assistance</h3>
-              <p className="assistance-desc">
-                Need help with scheduling, service issues, or ongoing care support? Submit a request and we’ll get back to you quickly.
-              </p>
-              <Link to="/book-an-appointment" className="btn btn-outline btn-sm">
-                Book an Appointment
+          <div className="cta-banner-content reveal-on-scroll animate-fade-in-up">
+            <span className="cta-mini-tag">Need Immediate Healthcare Assistance?</span>
+            <h2 className="cta-banner-title">
+              Book a Certified Nurse, Doctor, or Diagnostic Test Now.
+            </h2>
+            <p className="cta-banner-desc">
+              Our care coordinators are available 24/7 to assess your needs, verify prescriptions, and dispatch healthcare professionals directly to your home.
+            </p>
+            <div className="cta-banner-buttons">
+              <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">
+                <Calendar size={18} />
+                <span>Book an Appointment</span>
               </Link>
-            </div>
-
-            {/* Card 2 */}
-            <div className="assistance-card card highlighted reveal-on-scroll animate-fade-in-up delay-1">
-              <div className="assistance-icon-wrap">
-                <PhoneCall size={28} />
-              </div>
-              <h3 className="assistance-title">Talk to a Care Advisor</h3>
-              <p className="assistance-desc">
-                Have questions about our home health services or elderly care plans? Our care team is ready to guide you.
-              </p>
-              <Link to="/contact-us" className="btn btn-secondary btn-sm">
-                Contact us
-              </Link>
-            </div>
-
-            {/* Card 3 */}
-            <div className="assistance-card card reveal-on-scroll animate-fade-in-up delay-2">
-              <div className="assistance-icon-wrap">
-                <Calendar size={28} />
-              </div>
-              <h3 className="assistance-title">Book a Home Visit</h3>
-              <p className="assistance-desc">
-                Need a nurse, physiotherapist, or medical assistance at home? Schedule a professional visit at your convenience.
-              </p>
-              <Link to="/book-an-appointment" className="btn btn-primary btn-sm">
-                Book An appointment
-              </Link>
+              <a href={siteData.contact.phoneHref} className="btn btn-outline-white btn-lg">
+                <PhoneCall size={18} />
+                <span>Call {siteData.contact.phone}</span>
+              </a>
             </div>
           </div>
         </div>

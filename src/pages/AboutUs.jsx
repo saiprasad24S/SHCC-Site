@@ -16,9 +16,11 @@ import {
   History as HistoryIcon,
   Activity,
   FileText,
-  ArrowRight
+  ArrowRight,
+  ChevronRight
 } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
+import SectionHeading from '../components/SectionHeading/SectionHeading';
 import { siteData } from '../data/siteData';
 import { aboutData } from '../data/aboutData';
 import { statisticsData } from '../data/testimonialsData';
@@ -32,24 +34,10 @@ import './AboutUs.css';
 export default function AboutUs() {
   const who = aboutData.whoAreWe;
 
-  const aboutSections = [
-    {
-      title: "K Mahindra",
-      subtitle: "Co-Founder & Director of Operations",
-      desc: "Healthcare operations and strategic delivery leadership driving patient-first home medical networks.",
-      path: "/about-us/k-mahindra",
-      icon: UserCheck
-    },
-    {
-      title: "K Nakshitthra",
-      subtitle: "Co-Founder & Clinical Director",
-      desc: "Clinical nursing governance and empathetic patient advocacy ensuring high-touch compassionate care.",
-      path: "/about-us/k-nakshitthra",
-      icon: Heart
-    },
+  const organizationPillars = [
     {
       title: "Our Mission and Values",
-      subtitle: "Vision, Mission & Principles",
+      subtitle: "Vision & Principles",
       desc: "Upholding clinical excellence, integrity, 24/7 reliability, and patient dignity in every home visit.",
       path: "/about-us/mission-and-values",
       icon: Compass
@@ -62,16 +50,16 @@ export default function AboutUs() {
       icon: HistoryIcon
     },
     {
-      title: "Capabilities",
-      subtitle: "Clinical Infrastructure",
+      title: "Clinical Capabilities",
+      subtitle: "Medical Infrastructure",
       desc: "ICU bedside nursing, physiotherapy, doorstep lab collections, pharmacy delivery, and doctor on call.",
       path: "/about-us/capabilities",
       icon: Activity
     },
     {
-      title: "Reports and Policies",
-      subtitle: "Governance & Transparency",
-      desc: "Infection control, sterile SOPs, patient privacy compliance, and caregiver credential verifications.",
+      title: "Reports & Governance",
+      subtitle: "Quality & Compliance",
+      desc: "Infection control protocols, sterile SOPs, patient privacy, and caregiver credential verifications.",
       path: "/about-us/reports-and-policies",
       icon: FileText
     }
@@ -81,7 +69,7 @@ export default function AboutUs() {
     <div className="about-page">
       <PageBanner
         title="Who Are We?"
-        subtitle="About Skandan Home Carre Cclinic"
+        subtitle="About Skandan Home Carre Clinic — Dedicated to Clinical Excellence & Compassionate Home Care"
         breadcrumbs={[
           { label: "Home", path: "/" },
           { label: "About us", path: "/about-us" },
@@ -89,12 +77,12 @@ export default function AboutUs() {
         ]}
       />
 
-      {/* Main Story / Who Are We */}
+      {/* 1. Main Story / Who Are We */}
       <section id="who-are-we" className="about-main-section section-padding">
         <div className="container">
           <div className="about-main-grid">
             <div className="about-main-content">
-              <span className="section-badge-subtitle">Who Are We?</span>
+              <span className="section-badge-subtitle">Who Are We</span>
               <h2 className="section-main-title">{who.title}</h2>
               <p className="about-lead-p">{who.lead}</p>
               
@@ -102,10 +90,10 @@ export default function AboutUs() {
                 <p key={i}>{p}</p>
               ))}
 
-              <div className="about-features-list" style={{ margin: '26px 0 32px' }}>
+              <div className="about-features-list">
                 {who.highlights.map((hl, i) => (
                   <div key={i} className="about-feature-item">
-                    <CheckCircle2 size={20} className="feat-check-icon" />
+                    <CheckCircle2 size={18} className="feat-check-icon" />
                     <span>{hl}</span>
                   </div>
                 ))}
@@ -120,7 +108,7 @@ export default function AboutUs() {
                   <div>
                     <h4 className="vm-title">Our Vision</h4>
                     <p className="vm-text">
-                      To provide high-quality, affordable home healthcare services with compassion and professionalism—across India.
+                      To provide high-quality, affordable home healthcare services with compassion and professionalism across India.
                     </p>
                   </div>
                 </div>
@@ -132,7 +120,7 @@ export default function AboutUs() {
                   <div>
                     <h4 className="vm-title">Our Mission</h4>
                     <p className="vm-text">
-                      To become India’s most trusted home healthcare provider, recognized for excellence in care, integrity in service, and dedication to patient well-being.
+                      To be India’s most trusted home healthcare provider, recognized for excellence in clinical care, integrity in service, and patient dignity.
                     </p>
                   </div>
                 </div>
@@ -154,49 +142,92 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Explore About Us Sub-Sections Grid */}
-      <section className="section-padding bg-light">
+      {/* 2. Executive Leadership Profiles */}
+      <section className="about-leadership-section section-padding bg-light">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '45px' }}>
-            <span className="section-badge-subtitle">Organization Structure</span>
-            <h2 className="section-main-title">Explore Skandan Home Carre</h2>
-            <p className="about-lead-p" style={{ maxWidth: '750px', margin: '0 auto' }}>
-              Learn more about our leadership, history, capabilities, and clinical governance standards.
-            </p>
-          </div>
+          <SectionHeading
+            badge="Executive Leadership"
+            title="Guided by Healthcare Visionaries"
+            description="Meet the dedicated leaders behind Skandan Home Carre Clinic ensuring clinical rigor, operations excellence, and patient advocacy."
+            alignment="center"
+          />
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '26px' }}>
-            {aboutSections.map((sec, idx) => {
+          <div className="about-founders-grid">
+            {/* Founder 1: K Mahindra */}
+            <div className="founder-card card">
+              <div className="founder-header">
+                <div className="founder-avatar-icon">
+                  <UserCheck size={28} />
+                </div>
+                <div>
+                  <span className="founder-role-badge">Co-Founder & Operations Director</span>
+                  <h3 className="founder-name">K Mahindra</h3>
+                </div>
+              </div>
+              <p className="founder-bio">
+                Leading healthcare operations, emergency dispatch logistics, and clinical quality assurance to ensure every patient receives prompt, dependable home medical support.
+              </p>
+              <div className="founder-footer">
+                <Link to="/about-us/k-mahindra" className="founder-link">
+                  <span>View Leadership Profile</span>
+                  <ArrowRight size={15} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Founder 2: K Nakshitthra */}
+            <div className="founder-card card">
+              <div className="founder-header">
+                <div className="founder-avatar-icon" style={{ backgroundColor: 'var(--secondary-light)', color: 'var(--secondary-color)' }}>
+                  <Heart size={28} />
+                </div>
+                <div>
+                  <span className="founder-role-badge" style={{ color: 'var(--secondary-color)', backgroundColor: 'var(--secondary-light)' }}>
+                    Co-Founder & Clinical Director
+                  </span>
+                  <h3 className="founder-name">K Nakshitthra</h3>
+                </div>
+              </div>
+              <p className="founder-bio">
+                Overseeing nursing governance, clinical protocols, patient safety standards, and specialized geriatric care with deep empathy and personalized patient advocacy.
+              </p>
+              <div className="founder-footer">
+                <Link to="/about-us/k-nakshitthra" className="founder-link">
+                  <span>View Leadership Profile</span>
+                  <ArrowRight size={15} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Organization Structure & Governance Pillars */}
+      <section className="about-pillars-section section-padding">
+        <div className="container">
+          <SectionHeading
+            badge="Organizational Pillars"
+            title="Explore Our Core Foundation"
+            description="Learn more about our clinical standards, history, specialized capabilities, and healthcare governance policies."
+            alignment="center"
+          />
+
+          <div className="about-pillars-grid">
+            {organizationPillars.map((sec, idx) => {
               const IconComponent = sec.icon;
               return (
-                <Link key={idx} to={sec.path} className="card" style={{ padding: '34px 28px', display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                  <div style={{
-                    width: '54px',
-                    height: '54px',
-                    borderRadius: 'var(--border-radius-sm)',
-                    backgroundColor: idx % 2 === 0 ? 'var(--primary-light)' : 'var(--secondary-light)',
-                    color: idx % 2 === 0 ? 'var(--primary-color)' : 'var(--secondary-color)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '18px'
-                  }}>
-                    <IconComponent size={26} />
+                <Link key={idx} to={sec.path} className="pillar-card card">
+                  <div className="pillar-icon-box">
+                    <IconComponent size={24} />
                   </div>
 
-                  <h3 style={{ fontSize: '22px', color: 'var(--heading-color)', marginBottom: '4px', lineHeight: '1.3' }}>
-                    {sec.title}
-                  </h3>
-                  <span style={{ fontSize: '13px', fontWeight: '600', color: 'var(--secondary-color)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '12px' }}>
-                    {sec.subtitle}
-                  </span>
-                  <p style={{ fontSize: '15.5px', color: 'var(--text-secondary)', lineHeight: '1.65', marginBottom: '20px', flexGrow: 1 }}>
-                    {sec.desc}
-                  </p>
+                  <h3 className="pillar-card-title">{sec.title}</h3>
+                  <span className="pillar-card-subtitle">{sec.subtitle}</span>
+                  <p className="pillar-card-desc">{sec.desc}</p>
                   
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.8px', color: 'var(--primary-color)', marginTop: 'auto' }}>
+                  <div className="pillar-card-action">
                     <span>Learn More</span>
-                    <ArrowRight size={16} />
+                    <ChevronRight size={16} />
                   </div>
                 </Link>
               );
@@ -205,15 +236,15 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Why They Choose Us Section */}
-      <section className="about-why-section section-padding">
+      {/* 4. Why Families Choose Us Section */}
+      <section className="about-why-section section-padding bg-light">
         <div className="container">
           <div className="about-why-grid">
             <div className="about-why-content">
-              <span className="section-badge-subtitle">Why They Choose Us</span>
+              <span className="section-badge-subtitle">Why Families Trust Us</span>
               <h2 className="section-main-title">We spread care to provide quality life.</h2>
               <p className="about-why-lead">
-                At <strong>{siteData.name}</strong>, we go beyond basic support—we deliver compassionate, clinical, and professional care right to your doorstep. Our dedicated team and patient-first approach make us the trusted choice for thousands of families.
+                At <strong>{siteData.name}</strong>, we deliver compassionate, clinical, and hospital-standard care right to your doorstep. Our dedicated team and patient-first approach make us the trusted choice for thousands of families.
               </p>
 
               <div className="why-features-grid">
@@ -224,7 +255,7 @@ export default function AboutUs() {
                   <div>
                     <h4 className="why-item-title">Trusted by Thousands</h4>
                     <p className="why-item-desc">
-                      Families across all over India trust us for consistent, expert home care that truly makes a difference.
+                      Families across India trust us for consistent, expert home healthcare that truly makes a difference.
                     </p>
                   </div>
                 </div>
@@ -234,9 +265,9 @@ export default function AboutUs() {
                     <Award size={22} />
                   </div>
                   <div>
-                    <h4 className="why-item-title">Professional Caregivers</h4>
+                    <h4 className="why-item-title">Professional Clinicians</h4>
                     <p className="why-item-desc">
-                      Our team includes trained nurses, physiotherapists, and health aides who are selected for their compassion and medical expertise.
+                      Our team includes licensed nurses, physiotherapists, and health aides selected for clinical expertise and empathy.
                     </p>
                   </div>
                 </div>
@@ -246,9 +277,9 @@ export default function AboutUs() {
                     <Users size={22} />
                   </div>
                   <div>
-                    <h4 className="why-item-title">2500+ Happy Seniors</h4>
+                    <h4 className="why-item-title">2500+ Seniors Supported</h4>
                     <p className="why-item-desc">
-                      We’ve proudly supported thousands of seniors with comfort, dignity, and a sense of independence in their own homes.
+                      We’ve proudly supported thousands of seniors with comfort, dignity, and independence at home.
                     </p>
                   </div>
                 </div>
@@ -258,9 +289,9 @@ export default function AboutUs() {
                     <Clock size={22} />
                   </div>
                   <div>
-                    <h4 className="why-item-title">Easy and Safe Connectivity</h4>
+                    <h4 className="why-item-title">24x7 Clinical Support</h4>
                     <p className="why-item-desc">
-                      Reach us via phone, WhatsApp, or our website—our support is seamless, secure, and always accessible when you need it.
+                      Reach us via phone, WhatsApp, or our portal—our team is always accessible when you need it.
                     </p>
                   </div>
                 </div>
@@ -284,22 +315,22 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Bottom CTA Banner */}
+      {/* 5. Bottom CTA Banner */}
       <section className="about-cta-section text-center">
         <div className="container">
           <div className="about-cta-box">
-            <span className="cta-mini-tag text-white">Your Health, Our Priority</span>
+            <span className="cta-mini-tag">Your Health, Our Priority</span>
             <h2 className="text-white cta-title-lg">
-              At Skandan Home Carre Clinic, we understand that true healing begins at home. That’s why we focus not just on treatment, but on comfort, trust, and continuity of care— anywhere in India.
+              At Skandan Home Carre Clinic, true healing begins at home with comfort, trust, and continuous clinical oversight.
             </h2>
             <div className="about-cta-actions">
               <Link to="/book-an-appointment" className="btn btn-secondary btn-lg">
                 <Calendar size={18} />
-                Book an Appointment
+                <span>Book an Appointment</span>
               </Link>
               <a href={siteData.contact.phoneHref} className="btn btn-outline-white btn-lg">
                 <PhoneCall size={18} />
-                Call {siteData.contact.phone}
+                <span>Call {siteData.contact.phone}</span>
               </a>
             </div>
           </div>

@@ -6,10 +6,10 @@
 }
 
 .service-intro-content .lead-desc {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 400;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 26px;
   line-height: 1.75;
 }
 
@@ -22,21 +22,26 @@
 
 .service-hero-img {
   width: 100%;
-  height: 400px;
+  height: 420px;
   object-fit: cover;
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-lg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-hero-img:hover {
+  transform: scale(1.02);
 }
 
 /* Offerings Grid */
 .offerings-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  gap: 28px;
 }
 
 .offering-card {
-  padding: 36px 30px;
+  padding: 38px 32px;
   background: var(--surface-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
@@ -48,100 +53,144 @@
 }
 
 .offering-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-hover);
   border-color: var(--border-dark);
 }
 
 .offering-icon-wrap {
-  width: 58px;
-  height: 58px;
+  width: 62px;
+  height: 62px;
   border-radius: var(--border-radius-sm);
   background-color: var(--primary-light);
   color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  transition: transform var(--transition-normal), background-color var(--transition-normal);
+}
+
+.offering-card:hover .offering-icon-wrap {
+  transform: scale(1.1) rotate(5deg);
+  background-color: var(--secondary-light);
+  color: var(--secondary-color);
 }
 
 .offering-title {
-  font-size: 22px;
+  font-size: 23px;
   color: var(--heading-color);
   margin-bottom: 12px;
   line-height: 1.3;
 }
 
 .offering-desc {
-  font-size: 16px;
+  font-size: 16.5px;
   color: var(--text-secondary);
-  line-height: 1.68;
+  line-height: 1.7;
   margin-bottom: 0;
   flex-grow: 1;
 }
 
-/* How It Works Grid */
-.how-it-works-grid {
+/* Who Is It For Grid */
+.who-is-it-for-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.who-item-card {
+  padding: 26px 24px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-normal);
+}
+
+.who-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-dark);
+}
+
+.who-icon-pill {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--transition-normal);
+}
+
+.who-item-card:hover .who-icon-pill {
+  transform: scale(1.1);
+  background-color: var(--secondary-light);
+  color: var(--secondary-color);
+}
+
+.who-item-text {
+  font-size: 16px;
+  color: var(--heading-color);
+  line-height: 1.6;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* Service Steps Flow Grid */
+.service-steps-flow-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
-.how-step-card {
-  padding: 30px 24px;
+.service-flow-step-card {
+  padding: 32px 24px;
   background-color: var(--surface-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
-  text-align: center;
   box-shadow: var(--card-shadow);
-  position: relative;
-}
-
-.how-step-badge {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: #FFFFFF;
-  font-size: 18px;
-  font-weight: 700;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
+  flex-direction: column;
+  height: 100%;
+  transition: all var(--transition-normal);
 }
 
-.how-step-title {
-  font-size: 17px;
-  color: var(--heading-color);
-  line-height: 1.35;
-  font-weight: 600;
+.service-flow-step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-dark);
 }
 
-/* Equipment & Vaccine Tags Grid */
-.equipment-tags-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.equipment-tag-card {
-  padding: 18px 22px;
-  background-color: var(--surface-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-sm);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--heading-color);
-  box-shadow: var(--card-shadow);
-}
-
-.eq-check-icon {
+.flow-step-num {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
   color: var(--primary-color);
-  flex-shrink: 0;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.flow-step-title {
+  font-size: 19px;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.flow-step-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 0;
+  flex-grow: 1;
 }
 
 /* Why Section */
@@ -152,89 +201,105 @@
   align-items: center;
 }
 
+.service-why-media {
+  position: relative;
+}
+
 .service-feature-img {
   width: 100%;
   height: 440px;
   object-fit: cover;
   border-radius: var(--border-radius-md);
-  border: 1px solid var(--border-color);
   box-shadow: var(--shadow-lg);
-}
-
-.service-why-content .why-text {
-  font-size: 17px;
-  line-height: 1.72;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
 }
 
 .service-benefits-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 28px;
+  gap: 16px;
+  margin: 24px 0 32px;
 }
 
 .benefit-list-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
-  font-size: 16.5px;
-  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--heading-color);
+  font-weight: 500;
 }
 
 .benefit-check {
   color: var(--primary-color);
   flex-shrink: 0;
+  margin-top: 3px;
 }
 
 .why-call-box {
   display: flex;
   align-items: center;
-  gap: 16px;
-  background-color: var(--bg-secondary);
-  padding: 18px 24px;
+  gap: 18px;
+  background-color: var(--primary-light);
+  padding: 20px 24px;
   border-radius: var(--border-radius-sm);
   border-left: 4px solid var(--primary-color);
-  border-top: 1px solid var(--border-color);
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
 }
 
 .why-call-box strong {
   display: block;
-  font-size: 15px;
-  color: var(--heading-color);
+  font-size: 16px;
+  color: var(--primary-color);
   margin-bottom: 3px;
 }
 
 .why-call-box p {
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 0;
 }
 
-/* Service Bottom CTA */
-.service-bottom-cta-box {
-  max-width: 850px;
-  margin: 0 auto;
+/* Bottom CTA Section */
+.service-bottom-cta-section {
+  background: linear-gradient(135deg, #004E9E 0%, #002d5b 100%);
+  padding: 65px 0;
+}
+
+[data-theme="dark"] .service-bottom-cta-section {
+  background: linear-gradient(135deg, #0F1A34 0%, #060B18 100%);
+}
+
+.cta-title-lg {
+  font-family: var(--font-heading);
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.cta-desc-lead {
+  font-size: 18px;
+  max-width: 650px;
+  margin: 0 auto 30px;
+  line-height: 1.65;
+  opacity: 0.95;
 }
 
 .service-cta-actions {
   display: flex;
   justify-content: center;
-  gap: 18px;
-  margin-top: 28px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
-/* Booking Section */
+/* Booking Split Section */
 .booking-split-wrap {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 50px;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 60px;
   align-items: flex-start;
+}
+
+.booking-info-pane {
+  padding-right: 15px;
 }
 
 .booking-info-pane p {
@@ -247,7 +312,7 @@
 .booking-perks {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   margin-bottom: 30px;
 }
 
@@ -255,8 +320,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 15.5px;
+  font-weight: 600;
   color: var(--heading-color);
 }
 
@@ -265,36 +330,36 @@
   height: 8px;
   border-radius: 50%;
   background-color: var(--secondary-color);
-  flex-shrink: 0;
 }
 
 .emergency-call-card {
-  padding: 24px;
+  padding: 24px 26px;
   background-color: var(--surface-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
-  box-shadow: var(--card-shadow);
+  border-left: 4px solid var(--primary-color);
 }
 
 .emergency-call-card h4 {
   font-size: 18px;
+  color: var(--heading-color);
   margin-bottom: 6px;
 }
 
 .emergency-call-card p {
   font-size: 14.5px;
-  margin-bottom: 12px;
-  color: var(--text-secondary);
+  color: var(--text-muted);
+  margin-bottom: 14px;
 }
 
 .emergency-call-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--primary-color);
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 .emergency-call-btn:hover {
@@ -302,34 +367,37 @@
 }
 
 .form-card-wrapper {
-  padding: 36px 32px;
+  padding: 38px 34px;
   background-color: var(--surface-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--shadow-md);
 }
 
 .form-card-title {
-  font-size: 26px;
+  font-size: 24px;
   color: var(--heading-color);
   margin-bottom: 6px;
 }
 
 .form-card-subtitle {
   font-size: 15px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 24px;
 }
 
 @media (max-width: 1024px) {
+  .service-intro-grid {
+    grid-template-columns: 1fr;
+  }
   .offerings-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .how-it-works-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .service-intro-grid {
+  .who-is-it-for-grid {
     grid-template-columns: 1fr;
+  }
+  .service-steps-flow-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   .service-why-grid {
     grid-template-columns: 1fr;
@@ -339,20 +407,17 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .offerings-grid {
     grid-template-columns: 1fr;
   }
-  .how-it-works-grid {
+  .service-steps-flow-grid {
     grid-template-columns: 1fr;
-  }
-  .equipment-tags-grid {
-    grid-template-columns: 1fr;
-  }
-  .service-hero-img {
-    height: 280px;
   }
   .form-card-wrapper {
     padding: 26px 20px;
+  }
+  .service-hero-img {
+    height: 280px;
   }
 }

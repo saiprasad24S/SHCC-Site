@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, PhoneCall, Calendar, ShieldCheck, HeartHandshake, FileText } from 'lucide-react';
+import { CheckCircle2, PhoneCall, Calendar, ShieldCheck, HeartHandshake, FileText, ArrowRight, UserCheck } from 'lucide-react';
 import PageBanner from '../components/PageBanner/PageBanner';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 import AppointmentForm from '../components/AppointmentForm/AppointmentForm';
+import ServiceIcon from '../components/ServiceIcon/ServiceIcon';
 import { siteData } from '../data/siteData';
 import './ServicePage.css';
 
@@ -15,6 +16,7 @@ export default function ServicePageTemplate({ service }) {
       {/* 1. Page Banner */}
       <PageBanner
         title={service.pageTitle || service.title}
+        subtitle={service.subtitle}
         breadcrumbs={[
           { label: "Home", path: "/" },
           { label: "Services", path: "/services" },
@@ -27,18 +29,18 @@ export default function ServicePageTemplate({ service }) {
         <div className="container">
           <div className="service-intro-grid">
             <div className="service-intro-content">
-              <span className="section-badge-subtitle">{service.title}</span>
-              <h2 className="section-main-title">{service.subtitle}</h2>
+              <span className="section-badge-subtitle">{service.categoryName}</span>
+              <h2 className="section-main-title">{service.title}</h2>
               <p className="lead-desc">{service.fullDescription}</p>
 
               <div className="service-quick-cta">
                 <a href="#book-form" className="btn btn-primary btn-lg">
-                  <Calendar size={16} />
-                  Book an Appointment
+                  <Calendar size={18} />
+                  <span>Book an Appointment</span>
                 </a>
                 <a href={siteData.contact.phoneHref} className="btn btn-outline btn-lg">
-                  <PhoneCall size={16} />
-                  Call {siteData.contact.phone}
+                  <PhoneCall size={18} />
+                  <span>Call {siteData.contact.phone}</span>
                 </a>
               </div>
             </div>
@@ -61,16 +63,17 @@ export default function ServicePageTemplate({ service }) {
         <section className="service-offerings-section section-padding bg-light">
           <div className="container">
             <SectionHeading
-              subtitle="Scope of Care"
-              title={service.offeringsSectionTitle || `Our Comprehensive ${service.title} Include`}
-              description={service.offeringsSectionDesc || ""}
+              badge="Clinical Capabilities"
+              title={service.offeringsSectionTitle || `What We Provide`}
+              description="Standardized clinical procedures performed by certified healthcare specialists under strict medical protocols."
+              alignment="center"
             />
 
             <div className="offerings-grid">
               {service.offerings.map((off, index) => (
                 <div key={index} className="offering-card card">
                   <div className="offering-icon-wrap">
-                    <HeartHandshake size={26} />
+                    <ServiceIcon name={service.iconName} size={24} />
                   </div>
                   <h3 className="offering-title">{off.title}</h3>
                   <p className="offering-desc">{off.desc}</p>
@@ -81,24 +84,24 @@ export default function ServicePageTemplate({ service }) {
         </section>
       )}
 
-      {/* 4. Advanced / Critical Care Section (Nursing) */}
-      {service.advancedOfferings && (
-        <section className="service-advanced-section section-padding">
+      {/* 4. Who Is It For Section */}
+      {service.whoIsItFor && service.whoIsItFor.length > 0 && (
+        <section className="service-who-section section-padding">
           <div className="container">
             <SectionHeading
-              subtitle="Specialized Support"
-              title={service.advancedSectionTitle || "Advanced and Critical Care Services"}
-              description="High-dependency medical care provided by ICU-trained clinical nurses at home."
+              badge="Eligibility & Care Profiles"
+              title={service.whoIsItForTitle || "Who Is This Service For?"}
+              description="Tailored care regimens designed for specific patient recovery stages and medical circumstances."
+              alignment="center"
             />
 
-            <div className="offerings-grid">
-              {service.advancedOfferings.map((off, index) => (
-                <div key={index} className="offering-card card">
-                  <div className="offering-icon-wrap">
-                    <ShieldCheck size={26} />
+            <div className="who-is-it-for-grid">
+              {service.whoIsItFor.map((item, idx) => (
+                <div key={idx} className="who-item-card card">
+                  <div className="who-icon-pill">
+                    <UserCheck size={22} />
                   </div>
-                  <h3 className="offering-title">{off.title}</h3>
-                  <p className="offering-desc">{off.desc}</p>
+                  <p className="who-item-text">{item}</p>
                 </div>
               ))}
             </div>
@@ -106,21 +109,23 @@ export default function ServicePageTemplate({ service }) {
         </section>
       )}
 
-      {/* 5. Diagnostic How It Works & Radiology (Diagnostics) */}
-      {service.howItWorksSteps && (
-        <section className="service-how-it-works-section section-padding-sm bg-light">
+      {/* 5. How It Works Section */}
+      {service.howItWorks && service.howItWorks.length > 0 && (
+        <section className="service-how-it-works-section section-padding bg-light">
           <div className="container">
             <SectionHeading
-              subtitle="Process"
-              title={service.howItWorksTitle || "How it works"}
-              description="Quick, hygienic home sample collection with certified technicians."
+              badge="Structured Care Journey"
+              title="How It Works"
+              description="A seamless 4-step clinical workflow ensuring swift dispatch and supervised medical care."
+              alignment="center"
             />
 
-            <div className="how-it-works-grid">
-              {service.howItWorksSteps.map((step, idx) => (
-                <div key={idx} className="how-step-card card">
-                  <div className="how-step-badge">{idx + 1}</div>
-                  <h4 className="how-step-title">{step}</h4>
+            <div className="service-steps-flow-grid">
+              {service.howItWorks.map((step, idx) => (
+                <div key={idx} className="service-flow-step-card card">
+                  <span className="flow-step-num">{step.step}</span>
+                  <h4 className="flow-step-title">{step.title}</h4>
+                  <p className="flow-step-desc">{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -128,99 +133,7 @@ export default function ServicePageTemplate({ service }) {
         </section>
       )}
 
-      {service.radiologyOfferings && (
-        <section className="service-radiology-section section-padding">
-          <div className="container">
-            <SectionHeading
-              subtitle="Doorstep Imaging"
-              title={service.radiologyTitle || "Radiology Assistance at Home"}
-              description={service.radiologyDesc || ""}
-            />
-
-            <div className="offerings-grid">
-              {service.radiologyOfferings.map((off, index) => (
-                <div key={index} className="offering-card card">
-                  <div className="offering-icon-wrap">
-                    <FileText size={26} />
-                  </div>
-                  <h3 className="offering-title">{off.title}</h3>
-                  <p className="offering-desc">{off.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 6. Medical Equipment Rent & Purchase (Pharmacy) */}
-      {service.equipmentList && (
-        <section className="service-equipment-section section-padding-sm bg-light">
-          <div className="container">
-            <SectionHeading
-              subtitle="Rental & Sales"
-              title={service.equipmentSectionTitle || "Medical Equipment – Rent & Purchase"}
-              description={service.equipmentSectionDesc || ""}
-            />
-
-            <div className="equipment-tags-grid">
-              {service.equipmentList.map((eq, idx) => (
-                <div key={idx} className="equipment-tag-card card">
-                  <CheckCircle2 size={18} className="eq-check-icon" />
-                  <span>{eq}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 7. Vaccines Groups & Travel Immunization (Vaccination) */}
-      {service.vaccineGroups && (
-        <section className="service-vaccines-section section-padding-sm bg-light">
-          <div className="container">
-            <SectionHeading
-              subtitle="All Age Groups"
-              title={service.vaccinesSectionTitle || "Adult & Baby Vaccinations at Home"}
-              description={service.vaccinesSectionDesc || ""}
-            />
-
-            <div className="equipment-tags-grid">
-              {service.vaccineGroups.map((vg, idx) => (
-                <div key={idx} className="equipment-tag-card card">
-                  <CheckCircle2 size={18} className="eq-check-icon" />
-                  <span>{vg}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {service.travelOfferings && (
-        <section className="service-travel-section section-padding">
-          <div className="container">
-            <SectionHeading
-              subtitle="International Guidelines"
-              title={service.travelSectionTitle || "Travel Immunization Services"}
-              description={service.travelSectionDesc || ""}
-            />
-
-            <div className="offerings-grid">
-              {service.travelOfferings.map((off, index) => (
-                <div key={index} className="offering-card card">
-                  <div className="offering-icon-wrap">
-                    <ShieldCheck size={26} />
-                  </div>
-                  <h3 className="offering-title">{off.title}</h3>
-                  <p className="offering-desc">{off.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 8. Why Choose Skandan's [Service] */}
+      {/* 6. Why Choose Skandan's [Service] */}
       {service.whyChoosePoints && service.whyChoosePoints.length > 0 && (
         <section className="service-why-section section-padding">
           <div className="container">
@@ -261,7 +174,7 @@ export default function ServicePageTemplate({ service }) {
         </section>
       )}
 
-      {/* 9. Bottom CTA Section */}
+      {/* 7. Bottom CTA Section */}
       <section className="service-bottom-cta-section section-padding-sm bg-primary text-center">
         <div className="container">
           <div className="service-bottom-cta-box">
@@ -274,18 +187,18 @@ export default function ServicePageTemplate({ service }) {
             <div className="service-cta-actions">
               <a href={siteData.contact.phoneHref} className="btn btn-secondary btn-lg">
                 <PhoneCall size={18} />
-                {service.ctaButtonText || `Call +91 96609 66369`}
+                <span>{service.ctaButtonText || `Call +91 96609 66369`}</span>
               </a>
-              <Link to="/book-an-appointment" className="btn btn-outline-white btn-lg">
+              <a href="#book-form" className="btn btn-outline-white btn-lg">
                 <Calendar size={18} />
-                Book an Appointment
-              </Link>
+                <span>Book an Appointment</span>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 10. Book This Service Directly Form */}
+      {/* 8. Book This Service Directly Form */}
       <section id="book-form" className="service-booking-section section-padding bg-light">
         <div className="container">
           <div className="booking-split-wrap">
@@ -316,7 +229,7 @@ export default function ServicePageTemplate({ service }) {
                 <p>Call our care coordinator directly:</p>
                 <a href={siteData.contact.phoneHref} className="emergency-call-btn">
                   <PhoneCall size={18} />
-                  {siteData.contact.phone}
+                  <span>{siteData.contact.phone}</span>
                 </a>
               </div>
             </div>

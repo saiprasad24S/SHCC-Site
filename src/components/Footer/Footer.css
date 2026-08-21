@@ -1,7 +1,7 @@
 .site-footer {
   background-color: var(--footer-bg);
   color: var(--footer-text);
-  padding: 70px 0 0;
+  padding: 75px 0 0;
   margin-top: auto;
   border-top: 1px solid var(--footer-border);
   transition: background-color 0.3s ease;
@@ -13,7 +13,7 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 0.9fr 1.1fr 1.3fr;
+  grid-template-columns: 1.4fr 0.9fr 1.2fr 1.3fr;
   gap: 40px;
   padding-bottom: 50px;
   border-bottom: 1px solid var(--footer-border);
@@ -40,8 +40,27 @@
 
 .footer-about {
   color: var(--footer-text);
-  font-size: 15.5px;
+  font-size: 15px;
   line-height: 1.68;
+  margin-bottom: 16px;
+}
+
+.footer-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 8px 14px;
+  border-radius: var(--border-radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: #D3E2F4;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.trust-badge-icon {
+  color: #ff9ec6;
+  flex-shrink: 0;
 }
 
 /* Column Titles */
@@ -67,7 +86,7 @@
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
 }
 
 .footer-link {
@@ -75,7 +94,7 @@
   align-items: center;
   gap: 8px;
   color: var(--footer-text);
-  font-size: 15px;
+  font-size: 14.5px;
   transition: all var(--transition-fast);
 }
 
@@ -94,11 +113,20 @@
   transform: translateX(2px);
 }
 
+.footer-all-services-link {
+  color: #ff9ec6;
+  margin-top: 6px;
+}
+
+.footer-all-services-link:hover {
+  color: #FFFFFF;
+}
+
 /* Contact Column */
 .footer-contact-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 15px;
 }
 
 .footer-contact-item {
@@ -106,7 +134,7 @@
   align-items: flex-start;
   gap: 12px;
   color: var(--footer-text);
-  font-size: 15px;
+  font-size: 14.5px;
   line-height: 1.55;
 }
 
@@ -124,6 +152,12 @@
 .footer-contact-link:hover {
   color: #FFFFFF;
   text-decoration: underline;
+}
+
+.footer-phone-highlight {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
 }
 
 /* Footer Bottom Bar */
