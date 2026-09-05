@@ -25,17 +25,31 @@
 }
 
 .footer-logo-wrap {
-  margin-bottom: 20px;
-  background: #FFFFFF;
-  padding: 10px 16px;
-  border-radius: var(--border-radius-sm);
+  margin-bottom: 22px;
+  background: transparent;
+  padding: 0;
+  display: block;
+}
+
+.footer-logo-link {
   display: inline-block;
+  text-decoration: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-logo-link:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
 .footer-logo {
-  height: 52px;
+  height: 86px;
   width: auto;
+  max-width: 340px;
   object-fit: contain;
+  display: block;
+  margin-left: -5px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
 .footer-about {
@@ -202,6 +216,11 @@
 }
 
 @media (max-width: 600px) {
+  .footer-logo {
+    height: 72px;
+    max-width: 280px;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 30px;

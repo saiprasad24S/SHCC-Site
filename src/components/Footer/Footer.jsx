@@ -13,7 +13,9 @@ export default function Footer() {
           {/* Column 1: Brand Info */}
           <div className="footer-col brand-col">
             <div className="footer-logo-wrap">
-              <img src={logoImg} alt="Skandan Home Carre Clinic" className="footer-logo" />
+              <Link to="/" className="footer-logo-link" aria-label="Skandan Home Carre Clinic Home">
+                <img src={logoImg} alt="Skandan Home Carre Clinic" className="footer-logo" />
+              </Link>
             </div>
             <p className="footer-about">
               {siteData.footer.description}

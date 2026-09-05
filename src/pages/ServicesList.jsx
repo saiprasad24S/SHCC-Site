@@ -14,7 +14,7 @@ import SectionHeading from '../components/SectionHeading/SectionHeading';
 import ServiceIcon from '../components/ServiceIcon/ServiceIcon';
 import TiltCard from '../components/InteractiveCard/TiltCard';
 import MagneticButton from '../components/MagneticButton/MagneticButton';
-import { servicesData, serviceCategories } from '../data/servicesData';
+import { servicesData } from '../data/servicesData';
 import { siteData } from '../data/siteData';
 import './ServicesList.css';
 
@@ -67,33 +67,6 @@ export default function ServicesList() {
             description="Select any specialized clinical service below to view its clinical overview, key capabilities, and customized home care regimens."
             alignment="center"
           />
-
-          {/* Category Navigation Pills */}
-          <div className="services-category-tabs-wrap">
-            <div className="services-category-tabs" role="tablist">
-              {serviceCategories.map((cat) => {
-                const isActive = activeCategory === cat.key;
-                return (
-                  <button
-                    key={cat.key}
-                    className={`category-tab-btn ${isActive ? 'active' : ''}`}
-                    onClick={() => {
-                      setActiveCategory(cat.key);
-                      if (cat.key !== 'all') {
-                        const firstInCat = servicesData.find(s => s.categoryKey === cat.key);
-                        if (firstInCat) setSelectedServiceId(firstInCat.id);
-                      }
-                    }}
-                    role="tab"
-                    aria-selected={isActive}
-                  >
-                    <ServiceIcon name={cat.icon} size={17} className="tab-icon" />
-                    <span>{cat.name}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
 
           {/* Main Clinical Hub Layout (2 Columns) */}
           <div className="services-hub-layout">

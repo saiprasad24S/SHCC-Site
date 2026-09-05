@@ -36,7 +36,7 @@ import ServiceIcon from '../components/ServiceIcon/ServiceIcon';
 import TiltCard from '../components/InteractiveCard/TiltCard';
 import MagneticButton from '../components/MagneticButton/MagneticButton';
 import AnimatedCounter from '../components/AnimatedCounter/AnimatedCounter';
-import { servicesData, serviceCategories, getFeaturedServices } from '../data/servicesData';
+import { servicesData, getFeaturedServices } from '../data/servicesData';
 import { siteData } from '../data/siteData';
 
 // Image imports
@@ -195,27 +195,6 @@ export default function Home() {
             description="Explore our specialized clinical care, bedside nursing, physical therapy, at-home diagnostics, and genuine pharmacy supplies."
             alignment="center"
           />
-
-          {/* Modern Category Tab Bar */}
-          <div className="services-category-tabs-wrap">
-            <div className="services-category-tabs" role="tablist">
-              {serviceCategories.map((cat) => {
-                const isActive = activeCategory === cat.key;
-                return (
-                  <button
-                    key={cat.key}
-                    className={`category-tab-btn ${isActive ? 'active' : ''}`}
-                    onClick={() => setActiveCategory(cat.key)}
-                    role="tab"
-                    aria-selected={isActive}
-                  >
-                    <ServiceIcon name={cat.icon} size={17} className="tab-icon" />
-                    <span>{cat.name}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
 
           {/* Interactive Services Grid */}
           <div className="services-catalog-grid">
